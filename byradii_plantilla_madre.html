@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>ByRadii · Plantilla Madre</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   BYRADII · PLANTILLA MADRE · SISTEMA DE DISEÑO
+   ═══════════════════════════════════════════════ */
+:root {
+  /* IDENTIDAD BYRADII */
+  --byradii-gold: #C9A84C;
+  --byradii-gold-light: #F5EDD6;
+
+  /* TIPOGRAFÍA INTER — 5 PESOS */
+  --font: 'Inter', -apple-system, sans-serif;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* TAMAÑOS TIPOGRÁFICOS */
+  --fs-title: 22px;   /* Títulos de Bloque · Bold */
+  --fs-service: 16px; /* Nombres de Servicio · Medium */
+  --fs-body: 14px;    /* Texto Informativo · Regular */
+  --fs-btn: 15px;     /* Botones · SemiBold */
+  --fs-micro: 12px;   /* Micro-datos · Light */
+
+  /* BLOQUES — DEGRADADOS CENITALES */
+  --b1-from: #FFFFFF; --b1-to: #F4F4F2;   /* Identidad */
+  --b2-from: #E8F4FF; --b2-to: #FFFFFF;   /* Odontología */
+  --b3-from: #EDE8FA; --b3-to: #FFFFFF;   /* Especialidades */
+  --b4-from: #E6F4EE; --b4-to: #FFFFFF;   /* Orientación */
+  --b5-from: #FBF0EC; --b5-to: #FFFFFF;   /* Gestión */
+  --b6-from: #E4F2F7; --b6-to: #FFFFFF;   /* Derivaciones */
+  --b7-from: #F5F0E8; --b7-to: #FFFFFF;   /* Referidos */
+  --b8-from: #F5EAEA; --b8-to: #FFFFFF;   /* Urgencias */
+
+  /* GAMA AZUL CLÍNICO — GESTIÓN INTERNA */
+  --az-100: #E8F4FA;
+  --az-300: #C5DCF0;
+  --az-500: #5B9DC9;
+  --az-700: #2E6E9E;
+  --az-900: #1A4F7A;
+
+  /* SEMÁFORO CLÍNICO */
+  --urg-alta: #9B2335;
+  --urg-alta-bg: #F5EAEA;
+  --urg-media: #C8860A;
+  --urg-media-bg: #FDF3E3;
+  --urg-baja: #4A7C59;
+  --urg-baja-bg: #E8F3EB;
+
+  /* DISPONIBILIDAD ESPECIALISTAS */
+  --disp-activo-from: #DCEEE5; --disp-activo-to: #FFFFFF;
+  --disp-ausente-from: #FDF2DC; --disp-ausente-to: #FFFFFF;
+  --disp-pasivo-from: #EDE8FA; --disp-pasivo-to: #FFFFFF;
+
+  /* SISTEMA */
+  --white: #FFFFFF;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-400: #9CA3AF;
+  --gray-600: #4B5563;
+  --gray-800: #1F2937;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.09);
+  --radius: 12px;
+  --padding: 20px;
+  --safe-bot: env(safe-area-inset-bottom, 20px);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { background:#F9FAFB; }
+body {
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  color: var(--gray-800);
+  background: var(--gray-50);
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══ SCREENS ═══ */
+.screen { display:none; min-height:100vh; }
+.screen.active { display:block; }
+#screen-splash.active { display:flex; }
+#screen-login.active { display:flex; }
+
+/* ═══════════════════════════════════════
+   PANTALLA 0 · SPLASH
+   ═══════════════════════════════════════ */
+#screen-splash {
+  background: linear-gradient(160deg, #0A1628 0%, #0F2040 60%, #0A1628 100%);
+  flex-direction:column;
+  align-items:center; justify-content:center;
+  min-height:100vh; padding:40px 30px;
+  position:relative; overflow:hidden;
+}
+#screen-splash.active { display:flex; }
+
+.splash-bg-ring {
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(201,168,76,0.15);
+}
+.splash-ring-1 { width:320px; height:320px; top:50%; left:50%; transform:translate(-50%,-50%); }
+.splash-ring-2 { width:500px; height:500px; top:50%; left:50%; transform:translate(-50%,-50%); }
+.splash-ring-3 { width:700px; height:700px; top:50%; left:50%; transform:translate(-50%,-50%); }
+
+.splash-logo-area {
+  text-align:center; margin-bottom:32px;
+  position:relative; z-index:2;
+  animation: splashReveal 1.2s ease forwards;
+}
+@keyframes splashReveal {
+  0% { opacity:0; transform:translateY(20px); }
+  100% { opacity:1; transform:translateY(0); }
+}
+
+.splash-logo-placeholder {
+  width:100px; height:100px;
+  background:linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+  border:1.5px solid rgba(201,168,76,0.4);
+  border-radius:24px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:42px; margin:0 auto 20px;
+  box-shadow:0 0 40px rgba(201,168,76,0.15);
+}
+
+.splash-clinic-name {
+  font-size:26px; font-weight:var(--fw-bold);
+  color:var(--white); letter-spacing:-0.5px;
+  line-height:1.1; margin-bottom:6px;
+}
+.splash-slogan {
+  font-size:var(--fs-micro); font-weight:var(--fw-light);
+  color:rgba(255,255,255,0.55); letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.splash-text-excellence {
+  font-size:var(--fs-body); font-weight:var(--fw-regular);
+  color:rgba(255,255,255,0.7); text-align:center;
+  line-height:1.7; max-width:280px;
+  margin-bottom:40px; position:relative; z-index:2;
+  animation: splashReveal 1.4s ease forwards;
+}
+
+.splash-btn {
+  width:100%; max-width:280px;
+  background:linear-gradient(135deg, var(--byradii-gold), #A8893C);
+  border:none; border-radius:50px;
+  padding:16px 32px;
+  font-family:var(--font); font-size:var(--fs-btn);
+  font-weight:var(--fw-semibold); color:var(--white);
+  cursor:pointer; letter-spacing:0.3px;
+  box-shadow:0 8px 32px rgba(201,168,76,0.35);
+  transition:all 0.25s;
+  position:relative; z-index:2;
+  animation: splashReveal 1.6s ease forwards;
+}
+.splash-btn:active { transform:scale(0.97); }
+
+.splash-powered {
+  position:absolute; bottom:calc(30px + var(--safe-bot));
+  font-size:10px; font-weight:var(--fw-light);
+  color:rgba(255,255,255,0.3); letter-spacing:1px;
+  z-index:2;
+}
+.splash-powered b { font-weight:var(--fw-bold); color:rgba(255,255,255,0.45); }
+
+/* ═══════════════════════════════════════
+   PANTALLA 1 · LOGIN
+   ═══════════════════════════════════════ */
+#screen-login {
+  background:linear-gradient(160deg, #0A1628 0%, #0F2040 60%, #0A1628 100%);
+  flex-direction:column;
+  align-items:center; justify-content:center;
+  min-height:100vh; padding:40px 24px;
+}
+
+.login-card {
+  width:100%; background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px; padding:32px 24px;
+  backdrop-filter:blur(20px);
+}
+
+.login-header {
+  text-align:center; margin-bottom:28px;
+}
+.login-logo-mini {
+  width:52px; height:52px; border-radius:14px;
+  background:linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+  border:1px solid rgba(201,168,76,0.35);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; margin:0 auto 12px;
+}
+.login-title {
+  font-size:20px; font-weight:var(--fw-bold);
+  color:var(--white); margin-bottom:4px;
+}
+.login-sub {
+  font-size:var(--fs-micro); color:rgba(255,255,255,0.5);
+  font-weight:var(--fw-light); letter-spacing:0.5px;
+}
+
+.login-field { margin-bottom:14px; }
+.login-label {
+  display:block; font-size:11px;
+  font-weight:var(--fw-semibold); color:rgba(255,255,255,0.5);
+  text-transform:uppercase; letter-spacing:0.8px; margin-bottom:7px;
+}
+.login-input {
+  width:100%; padding:13px 16px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:var(--radius); outline:none;
+  font-family:var(--font); font-size:var(--fs-body);
+  color:var(--white); font-weight:var(--fw-regular);
+  transition:border-color 0.2s;
+}
+.login-input::placeholder { color:rgba(255,255,255,0.3); }
+.login-input:focus { border-color:rgba(201,168,76,0.5); }
+
+.login-enter-btn {
+  width:100%; margin-top:8px;
+  background:linear-gradient(135deg, var(--byradii-gold), #A8893C);
+  border:none; border-radius:50px; padding:15px;
+  font-family:var(--font); font-size:var(--fs-btn);
+  font-weight:var(--fw-semibold); color:var(--white);
+  cursor:pointer; letter-spacing:0.3px;
+  box-shadow:0 6px 24px rgba(201,168,76,0.3);
+  transition:all 0.2s;
+}
+.login-enter-btn:active { transform:scale(0.98); }
+
+.login-recover {
+  text-align:center; margin-top:16px;
+  font-size:var(--fs-micro); color:rgba(255,255,255,0.4);
+  font-weight:var(--fw-light);
+}
+.login-recover a {
+  color:rgba(201,168,76,0.7); text-decoration:none;
+  font-weight:var(--fw-medium);
+}
+
+.login-tech-phrase {
+  text-align:center; margin-top:28px;
+  font-size:11px; color:rgba(255,255,255,0.3);
+  font-weight:var(--fw-light); line-height:1.6;
+  font-style:italic;
+}
+.login-powered {
+  text-align:center; margin-top:16px;
+  font-size:10px; color:rgba(255,255,255,0.25);
+  letter-spacing:1px;
+}
+.login-powered b { font-weight:var(--fw-bold); color:rgba(255,255,255,0.35); }
+
+/* ═══════════════════════════════════════
+   APP PRINCIPAL — ESTRUCTURA
+   ═══════════════════════════════════════ */
+#screen-app { padding-bottom:calc(80px + var(--safe-bot)); }
+
+/* HEADER */
+.app-header {
+  position:sticky; top:0; z-index:100;
+  background:var(--white);
+  border-bottom:1px solid var(--gray-100);
+  box-shadow:var(--shadow-sm);
+  padding:0 20px;
+  display:flex; align-items:center;
+  justify-content:space-between; height:58px;
+}
+.header-logo {
+  display:flex; align-items:center; gap:10px;
+}
+.header-logo-box {
+  width:38px; height:38px; border-radius:10px;
+  background:linear-gradient(135deg, var(--byradii-gold-light), #EDD98A20);
+  border:1px solid rgba(201,168,76,0.3);
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px;
+}
+.header-clinic-name {
+  font-size:15px; font-weight:var(--fw-bold);
+  color:var(--gray-800); line-height:1.1;
+}
+.header-clinic-esp {
+  font-size:10px; font-weight:var(--fw-light);
+  color:var(--gray-400); letter-spacing:0.3px;
+}
+.header-back-btn {
+  background:none; border:none; cursor:pointer;
+  font-size:22px; color:var(--gray-600);
+  padding:4px; display:none;
+}
+
+/* PORTICOS — PANELES */
+.portico { display:none; padding:16px 16px 8px; animation:fadeUp .28s ease; }
+.portico.active { display:block; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* ═══ FOOTER — 4 BOTONES FIJOS ═══ */
+.app-footer {
+  position:fixed; bottom:0; left:50%; transform:translateX(-50%);
+  width:100%; max-width:430px;
+  background:var(--white);
+  border-top:1px solid var(--gray-100);
+  padding:8px 0 calc(8px + var(--safe-bot));
+  display:flex; z-index:200;
+  box-shadow:0 -4px 20px rgba(0,0,0,0.07);
+}
+.footer-btn {
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; gap:3px; cursor:pointer;
+  padding:4px; border:none; background:none;
+  font-family:var(--font);
+}
+.footer-icon {
+  width:30px; height:30px; border-radius:9px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; transition:all 0.2s;
+}
+.footer-btn.active .footer-icon { background:var(--az-100); transform:scale(1.08); }
+.footer-label {
+  font-size:10px; font-weight:var(--fw-medium);
+  color:var(--gray-400); letter-spacing:0.2px;
+}
+.footer-btn.active .footer-label { color:var(--az-700); font-weight:var(--fw-semibold); }
+
+/* ═══ CAJA BASE ═══ */
+.caja {
+  background:var(--white);
+  border-radius:var(--radius);
+  border:1px solid rgba(0,0,0,0.05);
+  box-shadow:var(--shadow-sm);
+  overflow:hidden; margin-bottom:12px;
+}
+.caja-gradient-b2 { background:linear-gradient(180deg, var(--b2-from) 0%, var(--b2-to) 100%); }
+.caja-gradient-b3 { background:linear-gradient(180deg, var(--b3-from) 0%, var(--b3-to) 100%); }
+.caja-gradient-b4 { background:linear-gradient(180deg, var(--b4-from) 0%, var(--b4-to) 100%); }
+.caja-gradient-b5 { background:linear-gradient(180deg, var(--b5-from) 0%, var(--b5-to) 100%); }
+.caja-gradient-b6 { background:linear-gradient(180deg, var(--b6-from) 0%, var(--b6-to) 100%); }
+.caja-gradient-b7 { background:linear-gradient(180deg, var(--b7-from) 0%, var(--b7-to) 100%); }
+.caja-gradient-b8 { background:linear-gradient(180deg, var(--b8-from) 0%, var(--b8-to) 100%); }
+
+.caja-inner { padding:var(--padding); }
+
+/* ═══ TIPOGRAFÍA ═══ */
+.t-titulo {
+  font-size:var(--fs-title); font-weight:var(--fw-bold);
+  color:var(--gray-800); line-height:1.2;
+}
+.t-servicio {
+  font-size:var(--fs-service); font-weight:var(--fw-medium);
+  color:var(--gray-800);
+}
+.t-body { font-size:var(--fs-body); font-weight:var(--fw-regular); color:var(--gray-600); line-height:1.65; }
+.t-micro { font-size:var(--fs-micro); font-weight:var(--fw-light); color:var(--gray-400); }
+.t-section {
+  font-size:11px; font-weight:var(--fw-semibold);
+  color:var(--gray-400); text-transform:uppercase;
+  letter-spacing:1px; margin-bottom:10px;
+  display:flex; align-items:center; gap:8px;
+}
+.t-section::after { content:''; flex:1; height:1px; background:var(--gray-100); }
+
+/* ═══ BOTONES ═══ */
+.btn-primary {
+  width:100%; padding:14px 20px;
+  background:linear-gradient(135deg, var(--az-700), var(--az-900));
+  border:none; border-radius:50px;
+  font-family:var(--font); font-size:var(--fs-btn);
+  font-weight:var(--fw-semibold); color:var(--white);
+  cursor:pointer; letter-spacing:0.2px;
+  box-shadow:0 4px 16px rgba(46,110,158,0.25);
+  transition:all 0.2s;
+}
+.btn-primary:active { transform:scale(0.98); }
+
+.btn-soft {
+  padding:11px 18px;
+  background:var(--az-100);
+  border:1px solid var(--az-300);
+  border-radius:50px;
+  font-family:var(--font); font-size:var(--fs-micro);
+  font-weight:var(--fw-semibold); color:var(--az-700);
+  cursor:pointer; transition:all 0.2s;
+}
+.btn-soft:active { background:var(--az-300); }
+
+.btn-wa {
+  position:fixed; bottom:calc(90px + var(--safe-bot)); right:calc(50% - 205px);
+  width:50px; height:50px; border-radius:50%;
+  background:#25D366; border:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; z-index:150;
+  box-shadow:0 4px 16px rgba(37,211,102,0.4);
+  transition:transform 0.2s;
+}
+.btn-wa:active { transform:scale(0.94); }
+
+/* ═══ POWERED ═══ */
+.powered {
+  text-align:center; padding:20px 0 8px;
+  font-size:10px; font-weight:var(--fw-light);
+  color:var(--gray-400); letter-spacing:1px;
+}
+.powered b { font-weight:var(--fw-bold); color:var(--gray-600); }
+
+/* ═══════════════════════════════════════
+   P1 · DASHBOARD
+   ═══════════════════════════════════════ */
+.dashboard-hero {
+  background:linear-gradient(135deg, #0F2040 0%, #1A4F7A 100%);
+  padding:24px 20px; color:var(--white); margin-bottom:12px;
+  position:relative; overflow:hidden;
+}
+.dashboard-hero::after {
+  content:'🦷'; position:absolute; right:-10px; top:-10px;
+  font-size:100px; opacity:0.07;
+}
+.dash-greeting { font-size:var(--fs-micro); font-weight:var(--fw-light); opacity:0.6; margin-bottom:4px; letter-spacing:1px; }
+.dash-name { font-size:22px; font-weight:var(--fw-bold); margin-bottom:4px; }
+.dash-rol { font-size:var(--fs-micro); font-weight:var(--fw-light); opacity:0.55; letter-spacing:0.5px; }
+
+.dash-alerts {
+  display:flex; gap:8px; padding:0 16px; margin-bottom:12px; overflow-x:auto; scrollbar-width:none;
+}
+.dash-alerts::-webkit-scrollbar { display:none; }
+.dash-alert-chip {
+  flex:none; display:flex; align-items:center; gap:6px;
+  padding:8px 14px; border-radius:50px;
+  font-size:var(--fs-micro); font-weight:var(--fw-medium);
+  cursor:pointer;
+}
+.chip-blue { background:var(--az-100); color:var(--az-700); border:1px solid var(--az-300); }
+.chip-amber { background:var(--urg-media-bg); color:var(--urg-media); border:1px solid #F0C060; }
+.chip-green { background:var(--urg-baja-bg); color:var(--urg-baja); border:1px solid #A0C8B0; }
+
+.dash-quick-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:10px; padding:0 16px; margin-bottom:16px;
+}
+.dash-quick-card {
+  background:var(--white); border-radius:var(--radius);
+  padding:16px 14px; border:1px solid var(--gray-100);
+  box-shadow:var(--shadow-sm); cursor:pointer;
+  transition:all 0.2s;
+}
+.dash-quick-card:active { transform:scale(0.97); }
+.dqc-icon { font-size:22px; margin-bottom:8px; }
+.dqc-label {
+  font-size:13px; font-weight:var(--fw-semibold);
+  color:var(--gray-800); margin-bottom:2px;
+}
+.dqc-sub { font-size:var(--fs-micro); font-weight:var(--fw-light); color:var(--gray-400); }
+
+/* ═══════════════════════════════════════
+   P2 · URGENCIAS
+   ═══════════════════════════════════════ */
+.urg-nivel {
+  border-radius:var(--radius); padding:16px;
+  margin-bottom:10px; cursor:pointer;
+  border:1px solid transparent; transition:all 0.2s;
+  display:flex; align-items:center; gap:14px;
+}
+.urg-alta { background:var(--urg-alta-bg); border-color:#E8B0B0; }
+.urg-media { background:var(--urg-media-bg); border-color:#F0D080; }
+.urg-baja { background:var(--urg-baja-bg); border-color:#A0C8B0; }
+.urg-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+.urg-alta .urg-dot { background:var(--urg-alta); }
+.urg-media .urg-dot { background:var(--urg-media); }
+.urg-baja .urg-dot { background:var(--urg-baja); }
+.urg-info { flex:1; }
+.urg-nivel-label {
+  font-size:11px; font-weight:var(--fw-semibold);
+  text-transform:uppercase; letter-spacing:1px; margin-bottom:2px;
+}
+.urg-alta .urg-nivel-label { color:var(--urg-alta); }
+.urg-media .urg-nivel-label { color:var(--urg-media); }
+.urg-baja .urg-nivel-label { color:var(--urg-baja); }
+.urg-desc { font-size:var(--fs-micro); color:var(--gray-600); font-weight:var(--fw-regular); }
+
+.urg-item-card {
+  background:var(--white); border-radius:var(--radius);
+  padding:16px; margin-bottom:10px;
+  border:1px solid var(--gray-100); box-shadow:var(--shadow-sm);
+  cursor:pointer; transition:all 0.2s;
+}
+.urg-item-card:active { transform:scale(0.98); }
+.urg-item-header { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+.urg-item-ico {
+  width:40px; height:40px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;
+}
+.urg-item-title { font-size:var(--fs-service); font-weight:var(--fw-semibold); color:var(--gray-800); }
+.urg-item-sub { font-size:var(--fs-micro); color:var(--gray-400); font-weight:var(--fw-regular); }
+.urg-item-body { font-size:var(--fs-body); color:var(--gray-600); line-height:1.65; margin-bottom:10px; }
+.urg-alert-box {
+  background:var(--urg-alta-bg); border-left:3px solid var(--urg-alta);
+  border-radius:0 8px 8px 0; padding:10px 12px;
+  font-size:var(--fs-micro); color:var(--urg-alta); font-weight:var(--fw-medium);
+  line-height:1.55;
+}
+
+/* ═══════════════════════════════════════
+   P3 · ESPECIALIDAD PRINCIPAL / SERVICIOS
+   ═══════════════════════════════════════ */
+.serv-card {
+  background:var(--white); border-radius:var(--radius);
+  padding:16px; margin-bottom:10px;
+  border:1px solid var(--gray-100); box-shadow:var(--shadow-sm);
+  cursor:pointer; transition:all 0.2s;
+}
+.serv-card:active { transform:scale(0.98); }
+.serv-header { display:flex; align-items:flex-start; gap:12px; }
+.serv-ico {
+  width:44px; height:44px; border-radius:11px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; flex-shrink:0;
+}
+.serv-body { flex:1; }
+.serv-title { font-size:var(--fs-service); font-weight:var(--fw-semibold); color:var(--gray-800); margin-bottom:3px; }
+.serv-desc { font-size:var(--fs-body); color:var(--gray-600); line-height:1.55; margin-bottom:8px; }
+.serv-tag {
+  display:inline-block; padding:3px 10px; border-radius:50px;
+  font-size:11px; font-weight:var(--fw-semibold); letter-spacing:0.3px;
+}
+.serv-expand {
+  max-height:0; overflow:hidden; transition:max-height 0.4s ease;
+  border-top:0px solid var(--gray-100);
+}
+.serv-card.open .serv-expand {
+  max-height:400px;
+  border-top:1px solid var(--gray-100); padding-top:14px; margin-top:12px;
+}
+.serv-detail-row {
+  display:flex; gap:8px; margin-bottom:8px;
+  font-size:var(--fs-body); color:var(--gray-600); line-height:1.55;
+}
+.serv-detail-row span:first-child { flex-shrink:0; }
+
+/* ORTODONCIA MÓDULO */
+.orto-selector {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:10px; margin-bottom:14px;
+}
+.orto-option {
+  background:var(--white); border-radius:var(--radius);
+  padding:16px 12px; text-align:center;
+  border:2px solid var(--gray-100); cursor:pointer;
+  transition:all 0.2s;
+}
+.orto-option.active {
+  border-color:var(--az-500);
+  background:linear-gradient(180deg, var(--az-100) 0%, var(--white) 100%);
+}
+.orto-option-ico { font-size:28px; margin-bottom:8px; }
+.orto-option-label { font-size:13px; font-weight:var(--fw-semibold); color:var(--gray-800); }
+.orto-option-sub { font-size:var(--fs-micro); color:var(--gray-400); margin-top:2px; }
+
+.alineador-timer {
+  background:linear-gradient(135deg, var(--az-100), var(--white));
+  border-radius:var(--radius); padding:20px;
+  text-align:center; margin-bottom:12px;
+  border:1px solid var(--az-300);
+}
+.timer-circle {
+  width:120px; height:120px; border-radius:50%;
+  background:var(--white); border:4px solid var(--az-300);
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; margin:0 auto 12px;
+  box-shadow:var(--shadow-md);
+}
+.timer-num-big { font-size:28px; font-weight:var(--fw-bold); color:var(--az-700); line-height:1; }
+.timer-unit { font-size:var(--fs-micro); font-weight:var(--fw-light); color:var(--gray-400); letter-spacing:1px; }
+.timer-label { font-size:var(--fs-body); font-weight:var(--fw-medium); color:var(--az-700); }
+.timer-sub { font-size:var(--fs-micro); color:var(--gray-400); margin-top:2px; }
+
+/* EVOLUCIÓN TRATAMIENTO */
+.evolucion-card {
+  background:var(--white); border-radius:var(--radius);
+  padding:20px; margin-bottom:12px;
+  border:1px solid var(--gray-100); box-shadow:var(--shadow-sm);
+}
+.evol-bar-wrap { background:var(--gray-100); border-radius:50px; height:10px; margin:10px 0 6px; overflow:hidden; }
+.evol-bar { height:100%; border-radius:50px; background:linear-gradient(90deg, var(--az-500), var(--az-700)); }
+.evol-pct { font-size:var(--fs-title); font-weight:var(--fw-bold); color:var(--az-700); }
+.evol-label { font-size:var(--fs-micro); color:var(--gray-400); }
+.evol-fotos-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:12px; }
+.evol-foto-slot {
+  aspect-ratio:1; border-radius:10px;
+  background:var(--gray-100);
+  border:1.5px dashed var(--gray-200);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  font-size:20px; cursor:pointer;
+}
+.evol-foto-label { font-size:9px; font-weight:var(--fw-semibold); color:var(--gray-400); margin-top:4px; }
+
+/* ═══════════════════════════════════════
+   P4 · ESPECIALIDADES SECUNDARIAS
+   ═══════════════════════════════════════ */
+.esp-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:10px; margin-bottom:12px;
+}
+.esp-card {
+  background:var(--white); border-radius:var(--radius);
+  padding:16px 12px; text-align:center;
+  border:1px solid var(--gray-100); box-shadow:var(--shadow-sm);
+  cursor:pointer; transition:all 0.2s;
+}
+.esp-card:active { transform:scale(0.95); }
+.esp-ico { font-size:28px; margin-bottom:8px; }
+.esp-name { font-size:13px; font-weight:var(--fw-semibold); color:var(--gray-800); line-height:1.2; }
+.esp-tag {
+  display:inline-block; margin-top:6px; padding:2px 8px;
+  border-radius:50px; font-size:10px; font-weight:var(--fw-semibold);
+}
+
+/* ═══════════════════════════════════════
+   P5 · ¿SABÍAS QUE...? EDUCATIVO
+   ═══════════════════════════════════════ */
+.sabias-card {
+  background:var(--white); border-radius:var(--radius);
+  padding:16px; margin-bottom:10px;
+  border:1px solid var(--gray-100); box-shadow:var(--shadow-sm);
+  cursor:pointer; transition:all 0.2s;
+}
+.sabias-card:active { transform:scale(0.98); }
+.sabias-header { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+.sabias-ico {
+  width:44px; height:44px; border-radius:11px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; flex-shrink:0;
+}
+.sabias-pregunta {
+  font-size:var(--fs-service); font-weight:var(--fw-semibold);
+  color:var(--gray-800); line-height:1.3;
+}
+.sabias-item { display:flex; gap:10px; margin-bottom:8px; }
+.sabias-item-label {
+  font-size:11px; font-weight:var(--fw-semibold);
+  color:var(--az-700); min-width:95px; letter-spacing:0.2px;
+}
+.sabias-item-val { font-size:var(--fs-body); color:var(--gray-600); line-height:1.55; flex:1; }
+.sabias-cta {
+  margin-top:12px; padding-top:12px; border-top:1px solid var(--gray-100);
+  font-size:var(--fs-micro); color:var(--az-500); font-weight:var(--fw-medium);
+}
+
+/* ═══════════════════════════════════════
+   P6 · ORIENTACIÓN
+   ═══════════════════════════════════════ */
+.post-tabs {
+  display:flex; gap:6px; overflow-x:auto;
+  scrollbar-width:none; margin-bottom:14px; padding-bottom:2px;
+}
+.post-tabs::-webkit-scrollbar { display:none; }
+.post-tab {
+  flex:none; padding:8px 16px; border-radius:50px;
+  font-family:var(--font); font-size:var(--fs-micro);
+  font-weight:var(--fw-semibold); cursor:pointer;
+  border:1.5px solid var(--gray-200); background:var(--white);
+  color:var(--gray-600); transition:all 0.2s; white-space:nowrap;
+}
+.post-tab.active {
+  background:var(--az-700); color:var(--white);
+  border-color:var(--az-700);
+}
+
+.post-card {
+  background:var(--white); border-radius:var(--radius);
+  padding:16px; margin-bottom:10px;
+  border:1px solid var(--gray-100); box-shadow:var(--shadow-sm);
+}
+.post-sections { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.post-section { border-radius:10px; padding:12px; }
+.ps-normal { background:var(--urg-baja-bg); }
+.ps-hacer { background:var(--az-100); }
+.ps-evitar { background:var(--urg-media-bg); }
+.ps-llamar { background:var(--urg-alta-bg); }
+.ps-label {
+  font-size:11px; font-weight:var(--fw-bold); text-transform:uppercase;
+  letter-spacing:0.8px; margin-bottom:6px;
+}
+.ps-normal .ps-label { color:var(--urg-baja); }
+.ps-hacer .ps-label { color:var(--az-700); }
+.ps-evitar .ps-label { color:var(--urg-media); }
+.ps-llamar .ps-label { color:var(--urg-alta); }
+.ps-text { font-size:var(--fs-micro); color:var(--gray-600); line-height:1.6; }
+
+/* HIGIENE ORAL */
+.higiene-card {
+  background:linear-gradient(180deg, var(--b4-from), var(--b4-to));
+  border-radius:var(--radius); padding:16px;
+  margin-bottom:10px; border:1px solid rgba(0,0,0,0.04);
+}
+.higiene-paso { display:flex; gap:12px; align-items:flex-start; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.06); }
+.higiene-paso:last-child { border-bottom:none; }
+.higiene-num {
+  width:28px; height:28px; border-radius:50%;
+  background:var(--az-700); color:var(--white);
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:var(--fw-bold); flex-shrink:0;
+}
+.higiene-text { font-size:var(--fs-body); color:var(--gray-700); line-height:1.55; }
+
+/* FAQ */
+.faq-item {
+  background:var(--white); border-radius:var(--radius);
+  margin-bottom:8px; border:1.5px solid transparent;
+  box-shadow:var(--shadow-sm); overflow:hidden; transition:border-color 0.2s;
+}
+.faq-item.open { border-color:var(--az-300); }
+.faq-q {
+  width:100%; background:none; border:none; padding:15px 16px;
+  text-align:left; font-family:var(--font);
+  font-size:var(--fs-body); font-weight:var(--fw-semibold);
+  color:var(--gray-800); cursor:pointer;
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+}
+.faq-q-ico {
+  width:30px; height:30px; border-radius:8px;
+  background:var(--gray-100); display:flex;
+  align-items:center; justify-content:center; font-size:14px; flex-shrink:0;
+}
+.faq-item.open .faq-q-ico { background:var(--az-100); }
+.faq-chev {
+  width:22px; height:22px; border-radius:50%;
+  background:var(--gray-100); display:flex;
+  align-items:center; justify-content:center;
+  font-size:10px; color:var(--gray-600); transition:all 0.3s;
+}
+.faq-item.open .faq-chev { background:var(--az-700); color:var(--white); transform:rotate(180deg); }
+.faq-ans { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+.faq-item.open .faq-ans { max-height:300px; }
+.faq-ans-inner {
+  padding:12px 16px 16px 56px; font-size:var(--fs-body);
+  color:var(--gray-600); line-height:1.7;
+  border-top:1px solid var(--gray-100);
+}
+
+/* ═══════════════════════════════════════
+   P7 · TURNOS
+   ═══════════════════════════════════════ */
+.turno-step {
+  background:var(--white); border-radius:var(--radius);
+  padding:18px 16px; margin-bottom:12px;
+  border:1px solid var(--gray-100); box-shadow:var(--shadow-sm);
+}
+.step-num { font-size:var(--fs-micro); font-weight:var(--fw-medium); color:var(--gray-400); letter-spacing:0.5px; margin-bottom:4px; }
+.step-title { font-size:var(--fs-service); font-weight:var(--fw-semibold); color:var(--gray-800); margin-bottom:14px; }
+.motivo-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.motivo-btn {
+  padding:12px 10px; border-radius:10px;
+  background:var(--gray-50); border:1.5px solid var(--gray-200);
+  cursor:pointer; text-align:center; transition:all 0.2s;
+}
+.motivo-btn.selected { border-color:var(--az-500); background:var(--az-100); }
+.motivo-icon { font-size:20px; margin-bottom:5px; }
+.motivo-label { font-size:12px; font-weight:var(--fw-semibold); color:var(--gray-700); line-height:1.2; }
+.input-field {
+  width:100%; padding:12px 14px;
+  border:1.5px solid var(--gray-200); border-radius:10px;
+  font-family:var(--font); font-size:var(--fs-body);
+  color:var(--gray-800); background:var(--gray-50); outline:none; margin-bottom:10px;
+  transition:border-color 0.2s;
+}
+.input-field:focus { border-color:var(--az-500); background:var(--white); }
+.turno-confirm {
+  text-align:center; font-size:var(--fs-micro);
+  color:var(--gray-400); margin-top:10px; line-height:1.6;
+}
+
+/* ═══════════════════════════════════════
+   P8 · DERIVACIONES + RED PROFESIONAL
+   ═══════════════════════════════════════ */
+.deriv-card {
+  background:linear-gradient(180deg, var(--b6-from), var(--b6-to));
+  border-radius:var(--radius); padding:16px;
+  margin-bottom:10px; border:1px solid rgba(0,0,0,0.05);
+  box-shadow:var(--shadow-sm);
+}
+.deriv-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.deriv-avatar {
+  width:46px; height:46px; border-radius:12px;
+  background:var(--az-100); border:1.5px solid var(--az-300);
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; flex-shrink:0;
+}
+.deriv-name { font-size:var(--fs-service); font-weight:var(--fw-semibold); color:var(--gray-800); }
+.deriv-esp { font-size:var(--fs-micro); color:var(--gray-500); font-weight:var(--fw-regular); margin-top:1px; }
+
+/* DISPONIBILIDAD */
+.disp-badge {
+  display:inline-flex; align-items:center; gap:5px;
+  padding:4px 10px; border-radius:50px;
+  font-size:11px; font-weight:var(--fw-semibold);
+}
+.disp-activo { background:linear-gradient(135deg, var(--disp-activo-from), var(--disp-activo-to)); color:var(--urg-baja); border:1px solid #A0C8B0; }
+.disp-ausente { background:linear-gradient(135deg, var(--disp-ausente-from), var(--disp-ausente-to)); color:var(--urg-media); border:1px solid #F0D080; }
+.disp-pasivo { background:linear-gradient(135deg, var(--disp-pasivo-from), var(--disp-pasivo-to)); color:#6B4EA0; border:1px solid #C8B8E8; }
+
+.deriv-actions { display:flex; gap:8px; }
+.deriv-btn {
+  flex:1; padding:10px; border-radius:50px;
+  font-family:var(--font); font-size:12px;
+  font-weight:var(--fw-semibold); cursor:pointer;
+  transition:all 0.2s; border:1.5px solid var(--az-300);
+  background:var(--white); color:var(--az-700);
+}
+.deriv-btn:active { background:var(--az-100); }
+
+.protocolo-banner {
+  background:linear-gradient(135deg, #1A4F7A, #0F2040);
+  border-radius:var(--radius); padding:16px;
+  margin-bottom:12px; color:var(--white);
+}
+.proto-title { font-size:13px; font-weight:var(--fw-semibold); margin-bottom:8px; }
+.proto-step { display:flex; align-items:flex-start; gap:10px; margin-bottom:8px; }
+.proto-num {
+  width:22px; height:22px; border-radius:50%;
+  background:rgba(201,168,76,0.25); border:1px solid rgba(201,168,76,0.4);
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; font-weight:var(--fw-bold); color:var(--byradii-gold);
+  flex-shrink:0;
+}
+.proto-text { font-size:var(--fs-micro); color:rgba(255,255,255,0.75); line-height:1.55; }
+
+/* ═══════════════════════════════════════
+   P9 · INTERNOS
+   ═══════════════════════════════════════ */
+.interno-card {
+  background:linear-gradient(180deg, var(--b5-from), var(--b5-to));
+  border-radius:var(--radius); padding:16px;
+  margin-bottom:10px; border:1px solid rgba(0,0,0,0.05);
+  box-shadow:var(--shadow-sm);
+}
+.interno-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.interno-avatar {
+  width:44px; height:44px; border-radius:12px;
+  background:rgba(201,168,76,0.15); border:1px solid rgba(201,168,76,0.3);
+  display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;
+}
+.interno-nombre { font-size:var(--fs-service); font-weight:var(--fw-semibold); color:var(--gray-800); }
+.interno-rol { font-size:var(--fs-micro); color:var(--gray-400); font-weight:var(--fw-regular); }
+.rol-badge {
+  display:inline-block; padding:3px 10px; border-radius:50px;
+  font-size:10px; font-weight:var(--fw-semibold);
+}
+.rol-titular { background:var(--byradii-gold-light); color:#8B6914; }
+.rol-secretaria { background:var(--az-100); color:var(--az-700); }
+.rol-auxiliar { background:var(--urg-baja-bg); color:var(--urg-baja); }
+.rol-especialista { background:var(--urg-media-bg); color:var(--urg-media); }
+
+/* ═══════════════════════════════════════
+   P10 · PACIENTES + REFERIDOS + VIP
+   ═══════════════════════════════════════ */
+.paciente-card {
+  background:var(--white); border-radius:var(--radius);
+  padding:16px; margin-bottom:10px;
+  border:1px solid var(--gray-100); box-shadow:var(--shadow-sm);
+}
+.paciente-top { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.pac-avatar {
+  width:50px; height:50px; border-radius:50%;
+  background:linear-gradient(135deg, var(--az-100), var(--az-300));
+  border:2px solid var(--az-300);
+  display:flex; align-items:center; justify-content:center; font-size:20px;
+}
+.pac-nombre { font-size:var(--fs-service); font-weight:var(--fw-semibold); color:var(--gray-800); }
+.pac-codigo { font-size:var(--fs-micro); color:var(--gray-400); font-family:monospace; }
+
+.vip-badge {
+  display:inline-flex; align-items:center; gap:4px;
+  padding:4px 10px; border-radius:50px;
+  background:var(--byradii-gold-light);
+  border:1px solid rgba(201,168,76,0.3);
+  font-size:11px; font-weight:var(--fw-semibold); color:#8B6914;
+}
+.vip-stars { display:flex; gap:2px; }
+.vip-star { font-size:12px; filter:grayscale(1); }
+.vip-star.lit { filter:grayscale(0); }
+
+.referido-btn {
+  width:100%; padding:14px;
+  background:linear-gradient(135deg, var(--byradii-gold), #A8893C);
+  border:none; border-radius:50px;
+  font-family:var(--font); font-size:var(--fs-btn);
+  font-weight:var(--fw-semibold); color:var(--white);
+  cursor:pointer; letter-spacing:0.2px;
+  box-shadow:0 4px 16px rgba(201,168,76,0.3);
+  transition:all 0.2s; margin-top:8px;
+}
+.referido-btn:active { transform:scale(0.98); }
+
+/* MEMBRESÍA BYRADII */
+.membresia-card {
+  background:linear-gradient(135deg, #0F2040, #1A4F7A);
+  border-radius:var(--radius); padding:20px;
+  margin-bottom:12px; color:var(--white);
+  position:relative; overflow:hidden;
+}
+.memb-ring {
+  position:absolute; border-radius:50%;
+  border:1px solid rgba(201,168,76,0.1);
+}
+.memb-ring-1 { width:200px; height:200px; right:-60px; top:-60px; }
+.memb-ring-2 { width:320px; height:320px; right:-120px; top:-120px; }
+.memb-nivel {
+  font-size:10px; font-weight:var(--fw-semibold); letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--byradii-gold); margin-bottom:4px;
+}
+.memb-nombre { font-size:18px; font-weight:var(--fw-bold); margin-bottom:2px; }
+.memb-codigo { font-size:var(--fs-micro); color:rgba(255,255,255,0.45); font-family:monospace; }
+.memb-cert {
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:14px; padding:7px 14px;
+  background:rgba(201,168,76,0.15);
+  border:1px solid rgba(201,168,76,0.3);
+  border-radius:50px;
+  font-size:12px; font-weight:var(--fw-medium); color:rgba(255,255,255,0.8);
+}
+
+/* ODONTOPEDIATRÍA */
+.odontopediatria-hero {
+  background:linear-gradient(135deg, #00897B, #004D40);
+  border-radius:var(--radius); padding:20px;
+  margin-bottom:12px; color:var(--white); position:relative; overflow:hidden;
+}
+.odontopediatria-hero::after { content:'🦷'; position:absolute; right:-10px; bottom:-10px; font-size:80px; opacity:0.08; }
+
+/* CUENTO MOLI */
+.story-card {
+  background:var(--white); border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow-md); margin-bottom:12px;
+}
+.story-scene {
+  min-height:190px; display:flex; align-items:center;
+  justify-content:center; padding:20px; position:relative; overflow:hidden;
+}
+.story-sc0 { background:linear-gradient(135deg, #E3F2FD, #E1F5FE); }
+.story-sc1 { background:linear-gradient(135deg, #FFF8E1, #FFFDE7); }
+.story-sc2 { background:linear-gradient(135deg, #FCE4EC, #F8BBD0); }
+.story-sc3 { background:linear-gradient(135deg, #E8F5E9, #DCEDC8); }
+.story-sc4 { background:linear-gradient(135deg, #EDE7F6, #E8EAF6); }
+.story-sc5 { background:linear-gradient(135deg, #E0F2F1, #B2DFDB); }
+.story-emoji { font-size:50px; display:block; margin-bottom:10px; animation:floatAnim 3s ease-in-out infinite; text-align:center; }
+@keyframes floatAnim { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.story-title { font-size:18px; font-weight:var(--fw-bold); color:var(--gray-800); text-align:center; margin-bottom:6px; }
+.story-text { font-size:var(--fs-body); color:var(--gray-600); text-align:center; line-height:1.65; }
+.story-footer { padding:14px 16px; }
+.story-dots { display:flex; gap:5px; justify-content:center; margin-bottom:12px; }
+.story-dot { width:7px; height:7px; border-radius:50%; background:var(--gray-200); transition:all 0.3s; }
+.story-dot.active { background:var(--az-500); width:20px; border-radius:4px; }
+.story-nav { display:flex; gap:8px; }
+.story-btn-back { flex:1; padding:11px; border-radius:50px; border:1.5px solid var(--az-300); background:var(--white); font-family:var(--font); font-size:13px; font-weight:var(--fw-semibold); color:var(--az-700); cursor:pointer; }
+.story-btn-next { flex:1; padding:11px; border-radius:50px; border:none; background:linear-gradient(135deg, var(--az-500), var(--az-700)); font-family:var(--font); font-size:13px; font-weight:var(--fw-semibold); color:var(--white); cursor:pointer; box-shadow:0 3px 12px rgba(46,110,158,0.25); }
+.story-btn-back:disabled, .story-btn-next:disabled { opacity:0.4; cursor:not-allowed; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PANTALLA 0 · SPLASH
+     ═══════════════════════════════════════ -->
+<div class="screen active" id="screen-splash">
+  <div class="splash-bg-ring splash-ring-1"></div>
+  <div class="splash-bg-ring splash-ring-2"></div>
+  <div class="splash-bg-ring splash-ring-3"></div>
+
+  <div class="splash-logo-area">
+    <div class="splash-logo-placeholder">🦷</div>
+    <div class="splash-clinic-name">[Nombre Clínica]</div>
+    <div class="splash-slogan">[Eslogan del profesional]</div>
+  </div>
+
+  <div class="splash-text-excellence">
+    Excelencia clínica y compromiso profesional en cada tratamiento
+  </div>
+
+  <button class="splash-btn" onclick="showScreen('screen-login')">
+    Ingresar
+  </button>
+
+  <div class="splash-powered">Powered by <b>By</b><b style="font-weight:700">Radii</b></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PANTALLA 1 · LOGIN
+     ═══════════════════════════════════════ -->
+<div class="screen" id="screen-login">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-logo-mini">🦷</div>
+      <div class="login-title">Bienvenido</div>
+      <div class="login-sub">Ingresá con tus datos</div>
+    </div>
+
+    <div class="login-field">
+      <label class="login-label">Email</label>
+      <input class="login-input" type="email" placeholder="tu@email.com">
+    </div>
+    <div class="login-field">
+      <label class="login-label">Contraseña</label>
+      <input class="login-input" type="password" placeholder="••••••••">
+    </div>
+
+    <button class="login-enter-btn" onclick="enterApp()">Enter</button>
+
+    <div class="login-recover">
+      <a href="#">Recuperar usuario</a> &nbsp;·&nbsp; <a href="#">Recuperar contraseña</a>
+    </div>
+  </div>
+
+  <div class="login-tech-phrase">
+    Gestión profesional integrada · Red orgánica de confianza
+  </div>
+  <div class="login-powered">Powered by <b>By</b><b style="font-weight:700">Radii</b></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     APP PRINCIPAL
+     ═══════════════════════════════════════ -->
+<div class="screen" id="screen-app">
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <button class="header-back-btn" id="backBtn" onclick="goBack()">←</button>
+    <div class="header-logo">
+      <div class="header-logo-box">🦷</div>
+      <div>
+        <div class="header-clinic-name">[Nombre Clínica]</div>
+        <div class="header-clinic-esp">[Especialidad · Ciudad]</div>
+      </div>
+    </div>
+    <div style="width:34px;height:34px;border-radius:50%;background:var(--az-100);border:1.5px solid var(--az-300);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--az-700);">T</div>
+  </header>
+
+  <!-- ═══ P1 · DASHBOARD ═══ -->
+  <div class="portico active" id="portico-dashboard">
+
+    <div class="dashboard-hero">
+      <div class="dash-greeting">BIENVENIDA</div>
+      <div class="dash-name">Dra. [Nombre]</div>
+      <div class="dash-rol">Titular · Dashboard</div>
+    </div>
+
+    <div class="dash-alerts">
+      <div class="dash-alert-chip chip-blue">🔔 3 Alertas</div>
+      <div class="dash-alert-chip chip-amber">📅 2 Turnos hoy</div>
+      <div class="dash-alert-chip chip-green">✅ Red activa</div>
+      <div class="dash-alert-chip chip-blue">📨 1 Aviso</div>
+    </div>
+
+    <div class="dash-quick-grid">
+      <div class="dash-quick-card" onclick="switchPortico('portico-urgencias'); setFooter('footer-urgencias')">
+        <div class="dqc-icon">🚨</div>
+        <div class="dqc-label">Urgencias</div>
+        <div class="dqc-sub">Triaje activo</div>
+      </div>
+      <div class="dash-quick-card" onclick="switchPortico('portico-turnos'); setFooter('footer-turnos')">
+        <div class="dqc-icon">📅</div>
+        <div class="dqc-label">Turnos</div>
+        <div class="dqc-sub">Agendar cita</div>
+      </div>
+      <div class="dash-quick-card" onclick="switchPortico('portico-derivaciones'); setFooter('footer-derivaciones')">
+        <div class="dqc-icon">🔗</div>
+        <div class="dqc-label">Derivaciones</div>
+        <div class="dqc-sub">Red profesional</div>
+      </div>
+      <div class="dash-quick-card" onclick="switchPortico('portico-pacientes'); setFooter('footer-pacientes')">
+        <div class="dqc-icon">👤</div>
+        <div class="dqc-label">Pacientes</div>
+        <div class="dqc-sub">Fichas y VIP</div>
+      </div>
+    </div>
+
+    <div style="padding:0 16px">
+      <div class="t-section">Módulos activos</div>
+    </div>
+    <div class="esp-grid" style="padding:0 16px">
+      <div class="esp-card" onclick="switchPortico('portico-servicios')">
+        <div class="esp-ico">🦷</div>
+        <div class="esp-name">Servicios</div>
+        <span class="esp-tag" style="background:var(--az-100);color:var(--az-700)">Activo</span>
+      </div>
+      <div class="esp-card" onclick="switchPortico('portico-orientacion')">
+        <div class="esp-ico">💡</div>
+        <div class="esp-name">Orientación</div>
+        <span class="esp-tag" style="background:var(--b4-from);color:var(--urg-baja)">Activo</span>
+      </div>
+      <div class="esp-card" onclick="switchPortico('portico-educativo')">
+        <div class="esp-ico">📚</div>
+        <div class="esp-name">¿Sabías que...?</div>
+        <span class="esp-tag" style="background:var(--b3-from);color:#6B4EA0">Activo</span>
+      </div>
+      <div class="esp-card" onclick="switchPortico('portico-internos')">
+        <div class="esp-ico">👥</div>
+        <div class="esp-name">Internos</div>
+        <span class="esp-tag" style="background:var(--b5-from);color:#C05020">Activo</span>
+      </div>
+    </div>
+
+    <div class="membresia-card" style="margin:0 16px 16px">
+      <div class="memb-ring memb-ring-1"></div>
+      <div class="memb-ring memb-ring-2"></div>
+      <div class="memb-nivel">⭐ Miembro Ingresante</div>
+      <div class="memb-nombre">Dra. [Nombre Apellido]</div>
+      <div class="memb-codigo">TIT-[COD]-001 · ByRadii Network</div>
+      <div class="memb-cert">🏅 Certificado de Ingreso a la Red</div>
+    </div>
+
+    <div class="powered">Powered by <b>By</b><b style="font-weight:700">Radii</b> · byradii.com</div>
+  </div>
+
+  <!-- ═══ P2 · URGENCIAS ═══ -->
+  <div class="portico" id="portico-urgencias">
+    <div class="t-titulo" style="margin-bottom:6px">Urgencias</div>
+    <div class="t-body" style="margin-bottom:16px">Seleccioná el nivel que corresponde a tu situación</div>
+
+    <div class="urg-nivel urg-alta" onclick="showUrgDetalle('alta')">
+      <div class="urg-dot"></div>
+      <div class="urg-info">
+        <div class="urg-nivel-label">🔴 Alta prioridad</div>
+        <div class="urg-desc">Dolor intenso, hinchazón, fiebre, trauma</div>
+      </div>
+      <span style="color:var(--urg-alta);font-size:20px">›</span>
+    </div>
+
+    <div class="urg-nivel urg-media" onclick="showUrgDetalle('media')">
+      <div class="urg-dot"></div>
+      <div class="urg-info">
+        <div class="urg-nivel-label">🟡 Media prioridad</div>
+        <div class="urg-desc">Bracket suelto, alambre, ligadura</div>
+      </div>
+      <span style="color:var(--urg-media);font-size:20px">›</span>
+    </div>
+
+    <div class="urg-nivel urg-baja" onclick="showUrgDetalle('baja')">
+      <div class="urg-dot"></div>
+      <div class="urg-info">
+        <div class="urg-nivel-label">🟢 Baja prioridad</div>
+        <div class="urg-desc">Molestia leve, sensibilidad normal post-ajuste</div>
+      </div>
+      <span style="color:var(--urg-baja);font-size:20px">›</span>
+    </div>
+
+    <!-- DETALLE URGENCIA -->
+    <div id="urg-detalle" style="display:none">
+      <div class="urg-item-card" id="urg-detalle-card">
+        <div class="urg-item-header">
+          <div class="urg-item-ico" id="urg-d-ico"></div>
+          <div>
+            <div class="urg-item-title" id="urg-d-title"></div>
+            <div class="urg-item-sub" id="urg-d-sub"></div>
+          </div>
+        </div>
+        <div class="urg-item-body" id="urg-d-desc"></div>
+        <div style="margin-bottom:10px">
+          <div class="t-section">Qué hacer ahora</div>
+          <div class="t-body" id="urg-d-inst" style="line-height:1.7"></div>
+        </div>
+        <div class="urg-alert-box" id="urg-d-alert"></div>
+        <button class="btn-primary" style="margin-top:12px" id="urg-d-wa">💬 Contactar por WhatsApp</button>
+        <button class="btn-soft" style="margin-top:8px;width:100%" onclick="hideUrgDetalle()">← Volver al triaje</button>
+      </div>
+    </div>
+    <div class="powered">Powered by <b>By</b><b>Radii</b></div>
+  </div>
+
+  <!-- ═══ P3 · SERVICIOS Y ESPECIALIDADES ═══ -->
+  <div class="portico" id="portico-servicios">
+    <div class="t-titulo" style="margin-bottom:6px">Servicios</div>
+    <div class="t-body" style="margin-bottom:16px">Tratamientos disponibles en esta red</div>
+
+    <div class="t-section">Odontología General</div>
+
+    <div class="serv-card" onclick="toggleServ(this)">
+      <div class="serv-header">
+        <div class="serv-ico" style="background:var(--az-100)">🔍</div>
+        <div class="serv-body">
+          <div class="serv-title">Diagnóstico y Control</div>
+          <div class="serv-desc">Examen completo de dientes, encías y tejidos blandos. Base de todo tratamiento.</div>
+          <span class="serv-tag" style="background:var(--az-100);color:var(--az-700)">Cada 6 meses</span>
+        </div>
+      </div>
+      <div class="serv-expand">
+        <div class="serv-detail-row"><span>✓</span><span>Revisión de caries activas e incipientes</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Evaluación de encías y tejidos blandos</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Diagnóstico por imágenes cuando corresponde</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Plan de tratamiento personalizado</span></div>
+      </div>
+    </div>
+
+    <div class="serv-card" onclick="toggleServ(this)">
+      <div class="serv-header">
+        <div class="serv-ico" style="background:#FFF8E1">🦷</div>
+        <div class="serv-body">
+          <div class="serv-title">Tratamiento de Caries</div>
+          <div class="serv-desc">Restauraciones estéticas con resinas de última generación. Indoloro y duradero.</div>
+          <span class="serv-tag" style="background:#FFF8E1;color:#B8860B">Sin dolor</span>
+        </div>
+      </div>
+      <div class="serv-expand">
+        <div class="serv-detail-row"><span>✓</span><span>Resinas compuestas de alta estética</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Anestesia local cuando es necesario</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Resultado del mismo color del diente</span></div>
+      </div>
+    </div>
+
+    <div class="serv-card" onclick="toggleServ(this)">
+      <div class="serv-header">
+        <div class="serv-ico" style="background:var(--urg-baja-bg)">✨</div>
+        <div class="serv-body">
+          <div class="serv-title">Limpieza Profesional</div>
+          <div class="serv-desc">Remoción de sarro y placa bacteriana. Incluye pulido y aplicación de flúor.</div>
+          <span class="serv-tag" style="background:var(--urg-baja-bg);color:var(--urg-baja)">Higiene</span>
+        </div>
+      </div>
+      <div class="serv-expand">
+        <div class="serv-detail-row"><span>✓</span><span>Ultrasonido y curetas para sarro</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Pulido con pasta abrasiva fina</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Aplicación de flúor protector</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Instrucciones de higiene personalizadas</span></div>
+      </div>
+    </div>
+
+    <div class="t-section">Ortodoncia</div>
+
+    <!-- SELECTOR BRACKETS / ALINEADORES -->
+    <div class="orto-selector">
+      <div class="orto-option active" id="orto-brackets-btn" onclick="setOrtoVia('brackets')">
+        <div class="orto-option-ico">🔩</div>
+        <div class="orto-option-label">Brackets</div>
+        <div class="orto-option-sub">Metal · Estético</div>
+      </div>
+      <div class="orto-option" id="orto-alineadores-btn" onclick="setOrtoVia('alineadores')">
+        <div class="orto-option-ico">💎</div>
+        <div class="orto-option-label">Alineadores</div>
+        <div class="orto-option-sub">Invisibles · STL</div>
+      </div>
+    </div>
+
+    <!-- VIA BRACKETS -->
+    <div id="orto-via-brackets">
+      <div class="serv-card" onclick="toggleServ(this)">
+        <div class="serv-header">
+          <div class="serv-ico" style="background:var(--az-100)">🔩</div>
+          <div class="serv-body">
+            <div class="serv-title">Ortodoncia con Brackets</div>
+            <div class="serv-desc">Sistema fijo de brackets metálicos o estéticos. El más efectivo y económico.</div>
+            <span class="serv-tag" style="background:var(--az-100);color:var(--az-700)">12-24 meses</span>
+          </div>
+        </div>
+        <div class="serv-expand">
+          <div class="serv-detail-row"><span>✓</span><span>Brackets metálicos de alta precisión</span></div>
+          <div class="serv-detail-row"><span>✓</span><span>Opción estética en cerámica o zafiro</span></div>
+          <div class="serv-detail-row"><span>✓</span><span>Ajustes cada 4-6 semanas</span></div>
+          <div class="serv-detail-row"><span>✓</span><span>Contenedor final incluido</span></div>
+        </div>
+      </div>
+
+      <div class="evolucion-card">
+        <div class="t-section">Evolución del tratamiento</div>
+        <div class="evol-pct">65%</div>
+        <div class="evol-label">Progreso actual</div>
+        <div class="evol-bar-wrap"><div class="evol-bar" style="width:65%"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--gray-400);margin-bottom:12px">
+          <span>Inicio</span><span>Mitad</span><span>Final</span>
+        </div>
+        <div class="evol-fotos-grid">
+          <div class="evol-foto-slot">📸<div class="evol-foto-label">Inicio</div></div>
+          <div class="evol-foto-slot">📸<div class="evol-foto-label">Mitad</div></div>
+          <div class="evol-foto-slot">📸<div class="evol-foto-label">Final</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIA ALINEADORES -->
+    <div id="orto-via-alineadores" style="display:none">
+      <div class="alineador-timer">
+        <div class="t-section">Contador de uso diario</div>
+        <div class="timer-circle">
+          <div class="timer-num-big" id="alin-horas">18</div>
+          <div class="timer-unit">horas</div>
+        </div>
+        <div class="timer-label">Objetivo: 22 horas diarias</div>
+        <div class="timer-sub">Quedan <b id="alin-restantes">4 horas</b> para completar el objetivo</div>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn-soft" onclick="alinSumar(-1)">− 1h</button>
+          <button class="btn-soft" onclick="alinSumar(1)">+ 1h</button>
+          <button class="btn-soft" onclick="alinReset()">Reset</button>
+        </div>
+      </div>
+      <div class="serv-card" onclick="toggleServ(this)">
+        <div class="serv-header">
+          <div class="serv-ico" style="background:var(--b3-from)">💎</div>
+          <div class="serv-body">
+            <div class="serv-title">Alineadores Invisibles</div>
+            <div class="serv-desc">Sistema STL abierto. Cómodos, removibles e imperceptibles.</div>
+            <span class="serv-tag" style="background:var(--b3-from);color:#6B4EA0">Alto ticket</span>
+          </div>
+        </div>
+        <div class="serv-expand">
+          <div class="serv-detail-row"><span>✓</span><span>Sistema STL abierto — sin restricciones de laboratorio</span></div>
+          <div class="serv-detail-row"><span>✓</span><span>Removible para comer y cepillarse</span></div>
+          <div class="serv-detail-row"><span>✓</span><span>Controles espaciados — menos visitas</span></div>
+          <div class="serv-detail-row"><span>⚠️</span><span>Requiere disciplina: 22 horas diarias</span></div>
+          <div class="serv-detail-row"><span>⚠️</span><span>Si se pierde: usar el anterior hasta reponer</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="t-section">Más especialidades</div>
+    <div class="esp-grid">
+      <div class="esp-card"><div class="esp-ico">🔬</div><div class="esp-name">Endodoncia</div></div>
+      <div class="esp-card"><div class="esp-ico">🩺</div><div class="esp-name">Periodoncia</div></div>
+      <div class="esp-card"><div class="esp-ico">🦷</div><div class="esp-name">Implantes</div></div>
+      <div class="esp-card"><div class="esp-ico">✨</div><div class="esp-name">Estética Dental</div></div>
+      <div class="esp-card"><div class="esp-ico">🔬</div><div class="esp-name">Cirugía Oral</div></div>
+      <div class="esp-card"><div class="esp-ico">👶</div><div class="esp-name">Odontopediatría</div></div>
+      <div class="esp-card"><div class="esp-ico">🦷</div><div class="esp-name">Prótesis</div></div>
+      <div class="esp-card"><div class="esp-ico">📷</div><div class="esp-name">Diagnóstico x Imágenes</div></div>
+    </div>
+    <div class="powered">Powered by <b>By</b><b>Radii</b></div>
+  </div>
+
+  <!-- ═══ P5 · EDUCATIVO ¿SABÍAS QUE...? ═══ -->
+  <div class="portico" id="portico-educativo">
+    <div class="t-titulo" style="margin-bottom:6px">¿Sabías que...?</div>
+    <div class="t-body" style="margin-bottom:16px">Conocé cada especialidad y cuándo la necesitás</div>
+
+    <div class="sabias-card">
+      <div class="sabias-header">
+        <div class="sabias-ico" style="background:var(--az-100)">🦷</div>
+        <div class="sabias-pregunta">¿Qué es la Implantología y cuándo la necesitás?</div>
+      </div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Qué es?</div><div class="sabias-item-val">Colocación de raíces artificiales de titanio para reemplazar dientes perdidos de forma permanente.</div></div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Qué resuelve?</div><div class="sabias-item-val">Pérdida de dientes por extracción, trauma o enfermedad. Devuelve función y estética.</div></div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Cuándo verla?</div><div class="sabias-item-val">Cuando falta un diente o varios y querés una solución fija, cómoda y de larga duración.</div></div>
+      <div class="sabias-cta">💬 Consultá con tu profesional sobre este tratamiento →</div>
+    </div>
+
+    <div class="sabias-card">
+      <div class="sabias-header">
+        <div class="sabias-ico" style="background:var(--urg-baja-bg)">🩺</div>
+        <div class="sabias-pregunta">¿Qué es la Periodoncia y cuándo la necesitás?</div>
+      </div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Qué es?</div><div class="sabias-item-val">Especialidad que trata las encías y el hueso que sostiene los dientes.</div></div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Qué resuelve?</div><div class="sabias-item-val">Sangrado, inflamación, movilidad dental y pérdida de hueso alveolar.</div></div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Cuándo verla?</div><div class="sabias-item-val">Si tus encías sangran al cepillarte, están inflamadas o notás que los dientes "se mueven".</div></div>
+      <div class="sabias-cta">💬 Consultá con tu profesional sobre este tratamiento →</div>
+    </div>
+
+    <div class="sabias-card">
+      <div class="sabias-header">
+        <div class="sabias-ico" style="background:#FFF8E1">🔬</div>
+        <div class="sabias-pregunta">¿Qué es la Endodoncia y cuándo la necesitás?</div>
+      </div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Qué es?</div><div class="sabias-item-val">Tratamiento de conducto radicular. Limpia y sella el interior del diente para salvar la pieza.</div></div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Qué resuelve?</div><div class="sabias-item-val">Infecciones del nervio, dolor intenso y abscesos dentales.</div></div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Cuándo verla?</div><div class="sabias-item-val">Dolor que no cede, diente oscurecido, hinchazón o sensibilidad intensa al frío o calor.</div></div>
+      <div class="sabias-cta">💬 Consultá con tu profesional sobre este tratamiento →</div>
+    </div>
+
+    <div class="sabias-card">
+      <div class="sabias-header">
+        <div class="sabias-ico" style="background:var(--b3-from)">✨</div>
+        <div class="sabias-pregunta">¿Qué es la Estética Dental y cuándo la necesitás?</div>
+      </div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Qué es?</div><div class="sabias-item-val">Tratamientos para mejorar la apariencia de dientes y sonrisa: blanqueamiento, carillas, diseño de sonrisa.</div></div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Qué resuelve?</div><div class="sabias-item-val">Dientes manchados, deformados, separados o con proporciones que no te gustan.</div></div>
+      <div class="sabias-item"><div class="sabias-item-label">¿Cuándo verla?</div><div class="sabias-item-val">Cuando querés mejorar tu sonrisa y la salud oral ya está resuelta.</div></div>
+      <div class="sabias-cta">💬 Consultá con tu profesional sobre este tratamiento →</div>
+    </div>
+
+    <div class="powered">Powered by <b>By</b><b>Radii</b></div>
+  </div>
+
+  <!-- ═══ P6 · ORIENTACIÓN AL PACIENTE ═══ -->
+  <div class="portico" id="portico-orientacion">
+    <div class="t-titulo" style="margin-bottom:6px">Orientación</div>
+    <div class="t-body" style="margin-bottom:14px">Post-procedimientos · Higiene · FAQs</div>
+
+    <div class="post-tabs">
+      <button class="post-tab active" onclick="setOrienTab(this,'post')">Post-procedimiento</button>
+      <button class="post-tab" onclick="setOrienTab(this,'higiene')">Higiene oral</button>
+      <button class="post-tab" onclick="setOrienTab(this,'faq')">Preguntas frecuentes</button>
+    </div>
+
+    <!-- POST-PROCEDIMIENTO -->
+    <div id="orien-post">
+      <div class="t-section">Seleccioná tu procedimiento</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+        <button class="btn-soft" onclick="setPostProc(this,'extraccion')" style="font-size:12px">🦷 Extracción</button>
+        <button class="btn-soft" onclick="setPostProc(this,'conducto')" style="font-size:12px">🔬 Conducto</button>
+        <button class="btn-soft" onclick="setPostProc(this,'brackets')" style="font-size:12px">🔩 Brackets</button>
+        <button class="btn-soft" onclick="setPostProc(this,'limpieza')" style="font-size:12px">✨ Limpieza</button>
+        <button class="btn-soft" onclick="setPostProc(this,'implante')" style="font-size:12px">🦷 Implante</button>
+        <button class="btn-soft" onclick="setPostProc(this,'blanqueamiento')" style="font-size:12px">⬜ Blanqueamiento</button>
+      </div>
+      <div class="post-card" id="post-card">
+        <div class="t-section" id="post-title" style="margin-bottom:12px">Post-Extracción</div>
+        <div class="post-sections">
+          <div class="post-section ps-normal"><div class="ps-label">Es normal</div><div class="ps-text" id="post-normal">Sangrado leve las primeras horas. Inflamación y sensibilidad los primeros 2-3 días.</div></div>
+          <div class="post-section ps-hacer"><div class="ps-label">Qué hacer</div><div class="ps-text" id="post-hacer">Morder la gasa 30 min. Aplicar frío externo. Descansar. Tomar medicación indicada.</div></div>
+          <div class="post-section ps-evitar"><div class="ps-label">Evitar</div><div class="ps-text" id="post-evitar">No escupir. No usar sorbete. No fumar. No comer del lado operado las primeras 24h.</div></div>
+          <div class="post-section ps-llamar"><div class="ps-label">Llamar si...</div><div class="ps-text" id="post-llamar">Sangrado que no cede, fiebre, dolor que aumenta después del 3er día o pus en la zona.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HIGIENE ORAL -->
+    <div id="orien-higiene" style="display:none">
+      <div class="higiene-card">
+        <div class="t-section">Técnica de cepillado</div>
+        <div class="higiene-paso"><div class="higiene-num">1</div><div class="higiene-text">Incliná el cepillo a 45° hacia la encía. Usá movimientos circulares suaves durante 2 minutos mínimo.</div></div>
+        <div class="higiene-paso"><div class="higiene-num">2</div><div class="higiene-text">Cepillá todas las superficies: externa, interna y masticatoria de cada diente.</div></div>
+        <div class="higiene-paso"><div class="higiene-num">3</div><div class="higiene-text">Usá hilo dental o interdental después de cada comida principal. Imprescindible con brackets.</div></div>
+        <div class="higiene-paso"><div class="higiene-num">4</div><div class="higiene-text">Enjuague con colutorio sin alcohol. El nocturno es el más importante — no comas después.</div></div>
+        <div class="higiene-paso"><div class="higiene-num">5</div><div class="higiene-text">Cepillá la lengua suavemente de atrás hacia adelante para eliminar bacterias.</div></div>
+      </div>
+      <div class="caja caja-gradient-b4" style="margin:0 0 12px">
+        <div class="caja-inner">
+          <div class="t-section">Frecuencia de controles</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px;font-size:var(--fs-body)"><span>🟢</span><span><b>Sin problemas:</b> cada 6 meses</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:var(--fs-body)"><span>🟡</span><span><b>Caries frecuentes:</b> cada 3-4 meses</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:var(--fs-body)"><span>🔴</span><span><b>Problemas de encías:</b> según indicación</span></div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:var(--fs-body)"><span>👶</span><span><b>Niños:</b> cada 6 meses desde el 1er diente</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div id="orien-faq" style="display:none">
+      <div class="t-section" style="margin-bottom:12px">Dolor y molestias</div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <div style="display:flex;align-items:center;gap:9px"><div class="faq-q-ico">😣</div>¿Por qué duele después del ajuste?</div>
+          <div class="faq-chev">▼</div>
+        </button>
+        <div class="faq-ans"><div class="faq-ans-inner">Es completamente normal. El dolor o sensibilidad dura 2-4 días y es señal de que los dientes se están moviendo. Tomá paracetamol si es necesario y comé alimentos blandos.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <div style="display:flex;align-items:center;gap:9px"><div class="faq-q-ico">🩸</div>¿Por qué sangran las encías?</div>
+          <div class="faq-chev">▼</div>
+        </button>
+        <div class="faq-ans"><div class="faq-ans-inner">El sangrado al cepillar generalmente indica placa bacteriana acumulada. Mejorá la técnica de higiene y usá hilo dental. Si persiste más de 2 semanas con buena higiene, consultá al profesional.</div></div>
+      </div>
+      <div class="t-section" style="margin-top:16px;margin-bottom:12px">Tratamientos</div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <div style="display:flex;align-items:center;gap:9px"><div class="faq-q-ico">🦷</div>¿Cuánto dura un tratamiento de ortodoncia?</div>
+          <div class="faq-chev">▼</div>
+        </button>
+        <div class="faq-ans"><div class="faq-ans-inner">Depende de cada caso. En promedio entre 12 y 24 meses para brackets. Los alineadores invisibles pueden ser más rápidos en casos moderados.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <div style="display:flex;align-items:center;gap:9px"><div class="faq-q-ico">🔬</div>¿Qué es una endodoncia?</div>
+          <div class="faq-chev">▼</div>
+        </button>
+        <div class="faq-ans"><div class="faq-ans-inner">Es el tratamiento del interior del diente cuando el nervio está infectado. Se limpia el conducto, se desinfecta y se sella. Permite conservar el diente sin extraerlo.</div></div>
+      </div>
+    </div>
+
+    <div class="powered">Powered by <b>By</b><b>Radii</b></div>
+  </div>
+
+  <!-- ═══ P7 · TURNOS ═══ -->
+  <div class="portico" id="portico-turnos">
+    <div class="t-titulo" style="margin-bottom:6px">Solicitar Turno</div>
+    <div class="t-body" style="margin-bottom:16px">Reservá en minutos · Confirmamos por WhatsApp</div>
+
+    <div class="turno-step">
+      <div class="step-num">Paso 1 de 4</div>
+      <div class="step-title">¿Cuál es el motivo?</div>
+      <div class="motivo-grid">
+        <div class="motivo-btn" onclick="selectMotivo(this,'Control y prevención')"><div class="motivo-icon">🟢</div><div class="motivo-label">Control y prevención</div></div>
+        <div class="motivo-btn" onclick="selectMotivo(this,'Tengo una molestia')"><div class="motivo-icon">🟡</div><div class="motivo-label">Tengo una molestia</div></div>
+        <div class="motivo-btn" onclick="selectMotivo(this,'Es una urgencia')"><div class="motivo-icon">🔴</div><div class="motivo-label">Es una urgencia</div></div>
+        <div class="motivo-btn" onclick="selectMotivo(this,'Consulta estética')"><div class="motivo-icon">✨</div><div class="motivo-label">Consulta estética</div></div>
+        <div class="motivo-btn" onclick="selectMotivo(this,'Continuar tratamiento')"><div class="motivo-icon">🦷</div><div class="motivo-label">Continuar tratamiento</div></div>
+        <div class="motivo-btn" onclick="selectMotivo(this,'Otra consulta')"><div class="motivo-icon">💬</div><div class="motivo-label">Otra consulta</div></div>
+      </div>
+    </div>
+
+    <div class="turno-step">
+      <div class="step-num">Paso 2 de 4</div>
+      <div class="step-title">¿Cuál es tu sede?</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="motivo-btn" onclick="selectSede(this)" style="text-align:left;display:flex;align-items:center;gap:10px"><span style="font-size:18px">🏙️</span><span class="motivo-label">Sede Principal · [Dirección]</span></div>
+        <div class="motivo-btn" onclick="selectSede(this)" style="text-align:left;display:flex;align-items:center;gap:10px"><span style="font-size:18px">🌿</span><span class="motivo-label">Sede Norte · [Dirección]</span></div>
+      </div>
+    </div>
+
+    <div class="turno-step">
+      <div class="step-num">Paso 3 de 4</div>
+      <div class="step-title">Tus datos</div>
+      <input class="input-field" type="text" placeholder="Nombre completo *">
+      <input class="input-field" type="tel" placeholder="WhatsApp *">
+      <input class="input-field" type="email" placeholder="Email (opcional)">
+      <div style="font-size:13px;font-weight:600;color:var(--gray-600);margin-bottom:8px">¿Es tu primera visita?</div>
+      <div style="display:flex;gap:8px">
+        <div class="motivo-btn" onclick="selectRadioSingle(this,'.primera-opt')" style="flex:1"><div class="motivo-label">Sí, primera vez</div></div>
+        <div class="motivo-btn primera-opt" onclick="selectRadioSingle(this,'.primera-opt')" style="flex:1"><div class="motivo-label">Ya soy paciente</div></div>
+      </div>
+    </div>
+
+    <div class="turno-step">
+      <div class="step-num">Paso 4 de 4</div>
+      <div class="step-title">Fecha y hora preferida</div>
+      <input class="input-field" type="date">
+      <select class="input-field"><option value="">Seleccionar horario...</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select>
+      <input class="input-field" type="text" placeholder="Mensaje adicional (opcional)">
+    </div>
+
+    <div style="padding:0 0 12px">
+      <button class="btn-primary" onclick="enviarTurno()">📅 Enviar solicitud por WhatsApp</button>
+      <div class="turno-confirm">Recibirás confirmación por WhatsApp o llamada</div>
+    </div>
+    <div class="powered">Powered by <b>By</b><b>Radii</b></div>
+  </div>
+
+  <!-- ═══ P8 · DERIVACIONES + RED ═══ -->
+  <div class="portico" id="portico-derivaciones">
+    <div class="t-titulo" style="margin-bottom:6px">Derivaciones</div>
+    <div class="t-body" style="margin-bottom:14px">Red de confianza profesional</div>
+
+    <div class="protocolo-banner">
+      <div class="proto-title">Protocolo de derivación</div>
+      <div class="proto-step"><div class="proto-num">1</div><div class="proto-text">Titular deriva — el sistema notifica al especialista</div></div>
+      <div class="proto-step"><div class="proto-num">2</div><div class="proto-text">Especialista confirma disponibilidad y porcentaje</div></div>
+      <div class="proto-step"><div class="proto-num">3</div><div class="proto-text">Especialista cierra con informe clínico y económico</div></div>
+      <div class="proto-step"><div class="proto-num">4</div><div class="proto-text">Sistema notifica al titular para rescatar al paciente</div></div>
+    </div>
+
+    <div class="t-section">Especialistas</div>
+
+    <div class="deriv-card">
+      <div class="deriv-header">
+        <div class="deriv-avatar">🔬</div>
+        <div style="flex:1">
+          <div class="deriv-name">Dr. Martínez</div>
+          <div class="deriv-esp">Endodoncia · Especialista en conductos</div>
+          <span class="disp-badge disp-activo" style="margin-top:4px">● Activo</span>
+        </div>
+        <div style="font-size:var(--fs-micro);color:var(--gray-400);font-family:monospace">ESP-[COD]-001</div>
+      </div>
+      <div class="deriv-actions">
+        <button class="deriv-btn">💬 Mensaje</button>
+        <button class="deriv-btn">📋 Derivar paciente</button>
+      </div>
+    </div>
+
+    <div class="deriv-card">
+      <div class="deriv-header">
+        <div class="deriv-avatar">🩺</div>
+        <div style="flex:1">
+          <div class="deriv-name">Dra. López</div>
+          <div class="deriv-esp">Periodoncia · Salud de encías</div>
+          <span class="disp-badge disp-ausente" style="margin-top:4px">● Ausencia temporal</span>
+        </div>
+        <div style="font-size:var(--fs-micro);color:var(--gray-400);font-family:monospace">ESP-[COD]-002</div>
+      </div>
+      <div class="deriv-actions">
+        <button class="deriv-btn">💬 Mensaje</button>
+        <button class="deriv-btn">📋 Derivar paciente</button>
+      </div>
+    </div>
+
+    <div class="t-section">Laboratorio y Diagnóstico</div>
+
+    <div class="deriv-card">
+      <div class="deriv-header">
+        <div class="deriv-avatar">🔧</div>
+        <div style="flex:1">
+          <div class="deriv-name">Lab. Dental Premium</div>
+          <div class="deriv-esp">Prótesis · Carillas · Coronas</div>
+          <span class="disp-badge disp-activo" style="margin-top:4px">● Activo</span>
+        </div>
+      </div>
+      <div class="deriv-actions">
+        <button class="deriv-btn">💬 Contactar</button>
+        <button class="deriv-btn">📦 Enviar encargo</button>
+      </div>
+    </div>
+
+    <div class="deriv-card">
+      <div class="deriv-header">
+        <div class="deriv-avatar">📷</div>
+        <div style="flex:1">
+          <div class="deriv-name">Centro de Imágenes</div>
+          <div class="deriv-esp">Panorámicas · Seriadas · Tomografías</div>
+          <span class="disp-badge disp-activo" style="margin-top:4px">● Activo</span>
+        </div>
+      </div>
+      <div class="deriv-actions">
+        <button class="deriv-btn">💬 Contactar</button>
+        <button class="deriv-btn">🗓️ Solicitar estudio</button>
+      </div>
+    </div>
+
+    <div class="powered">Powered by <b>By</b><b>Radii</b></div>
+  </div>
+
+  <!-- ═══ P9 · INTERNOS ═══ -->
+  <div class="portico" id="portico-internos">
+    <div class="t-titulo" style="margin-bottom:6px">Internos</div>
+    <div class="t-body" style="margin-bottom:16px">Equipo del consultorio</div>
+
+    <div class="interno-card">
+      <div class="interno-header">
+        <div class="interno-avatar">👩‍⚕️</div>
+        <div style="flex:1">
+          <div class="interno-nombre">Dra. [Nombre Apellido]</div>
+          <div class="interno-rol">Titular de la red</div>
+          <span class="rol-badge rol-titular" style="margin-top:4px">Titular</span>
+        </div>
+        <div style="font-size:var(--fs-micro);color:var(--gray-400);font-family:monospace">TIT-[COD]-001</div>
+      </div>
+      <div class="deriv-actions">
+        <button class="deriv-btn">🔔 Alertas</button>
+        <button class="deriv-btn">⚙️ Dashboard</button>
+      </div>
+    </div>
+
+    <div class="interno-card">
+      <div class="interno-header">
+        <div class="interno-avatar">👩‍💼</div>
+        <div style="flex:1">
+          <div class="interno-nombre">[Nombre Secretaria]</div>
+          <div class="interno-rol">Gestión de turnos y contacto</div>
+          <span class="rol-badge rol-secretaria" style="margin-top:4px">Secretaria</span>
+        </div>
+      </div>
+      <div class="deriv-actions">
+        <button class="deriv-btn">📅 Agenda</button>
+        <button class="deriv-btn">💬 Mensaje</button>
+      </div>
+    </div>
+
+    <div class="interno-card">
+      <div class="interno-header">
+        <div class="interno-avatar">👨‍⚕️</div>
+        <div style="flex:1">
+          <div class="interno-nombre">[Nombre Auxiliar]</div>
+          <div class="interno-rol">Asistente dental</div>
+          <span class="rol-badge rol-auxiliar" style="margin-top:4px">Auxiliar</span>
+        </div>
+      </div>
+      <div class="deriv-actions">
+        <button class="deriv-btn">✅ Tareas</button>
+        <button class="deriv-btn">💬 Mensaje</button>
+      </div>
+    </div>
+
+    <div class="powered">Powered by <b>By</b><b>Radii</b></div>
+  </div>
+
+  <!-- ═══ P10 · PACIENTES + REFERIDOS + VIP ═══ -->
+  <div class="portico" id="portico-pacientes">
+    <div class="t-titulo" style="margin-bottom:6px">Pacientes</div>
+    <div class="t-body" style="margin-bottom:16px">Fichas · Evolución · Referidos VIP</div>
+
+    <div class="paciente-card">
+      <div class="paciente-top">
+        <div class="pac-avatar">👤</div>
+        <div style="flex:1">
+          <div class="pac-nombre">[Nombre Paciente]</div>
+          <div class="pac-codigo">PAC-[COD]-047</div>
+        </div>
+        <div class="vip-badge">
+          <span>★</span>
+          <div class="vip-stars">
+            <span class="vip-star lit">⭐</span>
+            <span class="vip-star lit">⭐</span>
+            <span class="vip-star">⭐</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+        <span class="serv-tag" style="background:var(--az-100);color:var(--az-700);border:1px solid var(--az-300)">🔩 Ortodoncia en curso</span>
+        <span class="serv-tag" style="background:var(--urg-baja-bg);color:var(--urg-baja);border:1px solid #A0C8B0">Activo</span>
+      </div>
+      <div class="deriv-actions">
+        <button class="deriv-btn">📋 Ficha</button>
+        <button class="deriv-btn">📊 Evolución</button>
+        <button class="deriv-btn">📅 Turno</button>
+      </div>
+    </div>
+
+    <div class="t-section">Patient Referral</div>
+    <div class="caja caja-gradient-b7">
+      <div class="caja-inner">
+        <div style="font-size:var(--fs-service);font-weight:var(--fw-semibold);margin-bottom:8px">🌟 Recomendá a la clínica</div>
+        <div class="t-body" style="margin-bottom:12px">Si alguien de tu confianza necesita atención, compartí tu código. Por cada referido que llegue a consulta, sumás estrellas VIP.</div>
+        <div style="background:var(--az-100);border:1px solid var(--az-300);border-radius:10px;padding:12px;margin-bottom:12px;text-align:center">
+          <div style="font-size:var(--fs-micro);color:var(--gray-400);margin-bottom:4px;letter-spacing:1px">TU CÓDIGO DE REFERIDO</div>
+          <div style="font-size:22px;font-weight:var(--fw-bold);color:var(--az-700);font-family:monospace">REF-[COD]-047</div>
+          <div style="font-size:var(--fs-micro);color:var(--gray-400);margin-top:4px">Válido · Uso único por referido</div>
+        </div>
+        <button class="referido-btn">⭐ Compartir mi código</button>
+      </div>
+    </div>
+
+    <!-- ODONTOPEDIATRÍA MODULE -->
+    <div class="t-section" style="margin-top:8px">Módulo Odontopediatría</div>
+    <div class="odontopediatria-hero">
+      <div style="font-size:var(--fs-micro);letter-spacing:1px;opacity:0.7;margin-bottom:4px">ODONTOPEDIATRÍA</div>
+      <div style="font-size:18px;font-weight:var(--fw-bold);margin-bottom:8px">Sonrisas Felices 🦷</div>
+      <div style="font-size:var(--fs-body);opacity:0.8;line-height:1.55">Atención especializada para niños en un ambiente seguro, divertido y sin miedo.</div>
+      <button style="margin-top:14px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:50px;padding:9px 18px;color:white;font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer" onclick="switchPortico('portico-odontopediatria')">Ver módulo completo →</button>
+    </div>
+
+    <div class="powered">Powered by <b>By</b><b>Radii</b></div>
+  </div>
+
+  <!-- ═══ MÓDULO ODONTOPEDIATRÍA ═══ -->
+  <div class="portico" id="portico-odontopediatria">
+    <div class="t-titulo" style="margin-bottom:6px">Odontopediatría</div>
+    <div class="t-body" style="margin-bottom:16px">Sonrisas Felices · Especialista en niños</div>
+
+    <!-- CUENTO DE MOLI -->
+    <div class="t-section">El cuento de Moli</div>
+    <div class="story-card">
+      <div class="story-scene story-sc0" id="moli-scene">
+        <span class="story-emoji" id="moli-emoji">🦷</span>
+        <div style="text-align:center">
+          <div class="story-title" id="moli-title">¡Hola! Soy Moli</div>
+          <div class="story-text" id="moli-text">Soy Moli, un diente pequeño y brillante que vive en tu boca. ¡Hoy te voy a contar una historia de aventuras!</div>
+        </div>
+      </div>
+      <div class="story-footer">
+        <div class="story-dots" id="moli-dots"></div>
+        <div class="story-nav">
+          <button class="story-btn-back" id="moli-back" onclick="moliNav(-1)" disabled>← Anterior</button>
+          <button class="story-btn-next" id="moli-next" onclick="moliNav(1)">Siguiente →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICIOS PEDIÁTRICOS -->
+    <div class="t-section">Tratamientos pediátricos</div>
+    <div class="serv-card" onclick="toggleServ(this)">
+      <div class="serv-header">
+        <div class="serv-ico" style="background:#E0FAF7">🔍</div>
+        <div class="serv-body">
+          <div class="serv-title">Revisión y diagnóstico</div>
+          <div class="serv-desc">Examen completo de dientes, encías y tejidos blandos en niños.</div>
+          <span class="serv-tag" style="background:#E0FAF7;color:#00897B">Cada 6 meses</span>
+        </div>
+      </div>
+      <div class="serv-expand">
+        <div class="serv-detail-row"><span>✓</span><span>Primera visita desde el primer diente de leche</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Ambiente amigable y sin miedo</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Consejos de higiene para papás</span></div>
+      </div>
+    </div>
+    <div class="serv-card" onclick="toggleServ(this)">
+      <div class="serv-header">
+        <div class="serv-ico" style="background:#FFF0F0">🛡️</div>
+        <div class="serv-body">
+          <div class="serv-title">Selladores de fisuras</div>
+          <div class="serv-desc">Protección preventiva sobre molares. Indoloro y muy efectivo.</div>
+          <span class="serv-tag" style="background:#FFF0F0;color:#E65100">Preventivo</span>
+        </div>
+      </div>
+      <div class="serv-expand">
+        <div class="serv-detail-row"><span>✓</span><span>Cubre las grietas naturales de los molares</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Previene la formación de caries</span></div>
+        <div class="serv-detail-row"><span>✓</span><span>Procedimiento rápido e indoloro</span></div>
+      </div>
+    </div>
+
+    <!-- FAQ PAPÁS -->
+    <div class="t-section">Preguntas de los papás</div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <div style="display:flex;align-items:center;gap:9px"><div class="faq-q-ico">📅</div>¿A qué edad llevo a mi hijo por primera vez?</div>
+        <div class="faq-chev">▼</div>
+      </button>
+      <div class="faq-ans"><div class="faq-ans-inner">Se recomienda la primera visita alrededor del primer año de vida, cuando aparece el primer diente de leche. Cuanto antes mejor para establecer hábitos saludables.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <div style="display:flex;align-items:center;gap:9px"><div class="faq-q-ico">💪</div>¿Cómo ayudo a mi hijo a no tener miedo?</div>
+        <div class="faq-chev">▼</div>
+      </button>
+      <div class="faq-ans"><div class="faq-ans-inner">Nunca uses al dentista como amenaza. Llevá al niño desde pequeño a revisiones de rutina. Un ambiente positivo crea confianza. Dejá que el profesional maneje la situación con calma.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <div style="display:flex;align-items:center;gap:9px"><div class="faq-q-ico">🧴</div>¿Cuánta pasta dental debo usar?</div>
+        <div class="faq-chev">▼</div>
+      </button>
+      <div class="faq-ans"><div class="faq-ans-inner">De 0 a 3 años: tamaño de un grano de arroz. De 3 a 6 años: tamaño de un guisante. Enseñale a escupir sin enjuagar para aprovechar el flúor.</div></div>
+    </div>
+
+    <div class="powered">Powered by <b>By</b><b>Radii</b></div>
+  </div>
+
+</div><!-- /screen-app -->
+
+<!-- FOOTER FIJO -->
+<nav class="app-footer" id="app-footer" style="display:none">
+  <button class="footer-btn active" id="footer-inicio" onclick="porticoHistory=[]; switchPortico('portico-dashboard'); setFooter('footer-inicio')">
+    <div class="footer-icon">🏠</div>
+    <div class="footer-label">Inicio</div>
+  </button>
+  <button class="footer-btn" id="footer-contacto" onclick="openWA()">
+    <div class="footer-icon">📞</div>
+    <div class="footer-label">Contacto</div>
+  </button>
+  <button class="footer-btn" id="footer-wa" onclick="openWA()">
+    <div class="footer-icon">💬</div>
+    <div class="footer-label">WhatsApp</div>
+  </button>
+  <button class="footer-btn" id="footer-variable" onclick="switchPortico('portico-urgencias')">
+    <div class="footer-icon" id="footer-variable-icon">🚨</div>
+    <div class="footer-label" id="footer-variable-label">Urgencias</div>
+  </button>
+</nav>
+
+<!-- BOTÓN WHATSAPP FLOTANTE -->
+<button class="btn-wa" id="btn-wa" style="display:none" onclick="openWA()">💬</button>
+
+<script>
+/* ═══════════════════════════════
+   DATOS
+   ═══════════════════════════════ */
+const urgenciaData = {
+  alta: {
+    nivel: 'alta', ico: '😰', title: 'Urgencia Alta', sub: 'Atención inmediata recomendada',
+    desc: 'Dolor intenso que no cede con analgésicos, hinchazón facial, fiebre, pus o trauma dental. Puede indicar infección grave u otra complicación seria.',
+    inst: 'Tomá paracetamol según indicaciones. Evitá el ibuprofeno si estás en tratamiento de ortodoncia. Aplicá frío externo 15 min. No tocés la zona con la lengua. Contactanos hoy.',
+    alert: 'Llamá a la clínica hoy si hay hinchazón facial, fiebre, pus visible o el dolor es insoportable.'
+  },
+  media: {
+    nivel: 'media', ico: '🔩', title: 'Urgencia Media', sub: 'Atención en las próximas 48 horas',
+    desc: 'Bracket despegado con alambre suelto, ligadura suelta o alambre que pincha. No es grave pero requiere atención para evitar complicaciones.',
+    inst: 'Aplicá cera de ortodoncia sobre el extremo del alambre o bracket que molesta. Si el alambre pincha, intentá doblarlo suavemente hacia el diente con una goma de borrar limpia.',
+    alert: 'Contactá la clínica si el alambre se está clavando profundamente, hay sangrado activo o dolor intenso.'
+  },
+  baja: {
+    nivel: 'baja', ico: '😬', title: 'Molestia Normal', sub: 'Se resuelve en 2-4 días',
+    desc: 'Sensibilidad o dolor leve después del ajuste. Completamente normal. Los dientes están respondiendo al movimiento planificado.',
+    inst: 'Tomá paracetamol si lo necesitás. Comé alimentos blandos los primeros 2-3 días: yogur, puré, fideos, huevo. Aplicá frío en la mejilla. Es señal de que el tratamiento avanza.',
+    alert: 'Contactá si el dolor dura más de 7 días sin mejoría o si es muy intenso y no cede con analgésicos.'
+  }
+};
+
+const postData = {
+  extraccion: { title:'Post-Extracción', normal:'Sangrado leve las primeras horas. Inflamación y sensibilidad los primeros 2-3 días.', hacer:'Mordé la gasa 30 min. Aplicá frío externo. Descansá. Tomá la medicación indicada.', evitar:'No escupas. No uses sorbete. No fumes. No comas del lado operado las primeras 24hs.', llamar:'Sangrado que no cede, fiebre, dolor que aumenta después del 3er día o pus en la zona.' },
+  conducto: { title:'Post-Conducto', normal:'Sensibilidad al masticar los primeros días. Zona ligeramente sensible.', hacer:'Tomá el antibiótico y analgésico indicado. Comé del lado opuesto.', evitar:'No masticar del lado tratado hasta colocar la corona. Evitá alimentos duros.', llamar:'Dolor intenso que no cede, hinchazón, fiebre o si la restauración temporal se cayó.' },
+  brackets: { title:'Post-Colocación de Brackets', normal:'Dolor o molestia leve los primeros 3-4 días. Las mejillas se adaptan al roce.', hacer:'Tomá paracetamol si es necesario. Comé alimentos blandos. Usá cera en los brackets que rozan.', evitar:'Alimentos duros, pegajosos o duros las primeras semanas.', llamar:'Si un bracket se despegó en las primeras 48 horas o si el dolor es muy intenso.' },
+  limpieza: { title:'Post-Limpieza Profesional', normal:'Sensibilidad dental y en encías hasta 48 horas después. Normal si había sarro acumulado.', hacer:'Evitá alimentos muy fríos o calientes 24hs. Continuá con tu rutina de higiene habitual.', evitar:'Bebidas oscuras (café, vino, mate) las primeras 24hs para no teñir los dientes recién limpios.', llamar:'Si el sangrado de encías persiste más de 3 días o hay dolor intenso.' },
+  implante: { title:'Post-Cirugía de Implante', normal:'Inflamación y moretón en la zona los primeros 3-5 días. Sangrado leve las primeras horas.', hacer:'Aplicá frío 20 min ON / 20 min OFF las primeras 24hs. Tomá toda la medicación indicada. Descansá.', evitar:'No fumes. No te enjuagues con fuerza. No hagas actividad física las primeras 48hs.', llamar:'Fiebre, sangrado que no cede, dolor que aumenta después del 3er día o si el implante se mueve.' },
+  blanqueamiento: { title:'Post-Blanqueamiento', normal:'Sensibilidad dental aumentada hasta 48 horas. Completamente normal.', hacer:'Usá pasta dental sensibilizante. Tomá el gel de flúor si te lo indicaron.', evitar:'Alimentos y bebidas con color las primeras 48hs: café, vino, mate, tomate, salsas oscuras.', llamar:'Si la sensibilidad es muy intensa o persiste más de una semana.' }
+};
+
+const moliStory = [
+  {cls:'story-sc0', emoji:'🦷', title:'¡Hola! Soy Moli', text:'Soy Moli, un diente pequeño y brillante que vive en tu boca. ¡Hoy te voy a contar una historia de aventuras!'},
+  {cls:'story-sc1', emoji:'🐉', title:'El dragón del azúcar', text:'Había un dragón travieso llamado Carielo que adoraba los dulces y dejaba residuos pegajosos en los dientes. ¡Era muy molestoso!'},
+  {cls:'story-sc2', emoji:'😰', title:'Moli necesitaba ayuda', text:'Carielo empezó a hacerle hoyitos a Moli. ¡Eso dolía! Moli se puso muy triste y sus amigos los dientes estaban asustados.'},
+  {cls:'story-sc3', emoji:'👩‍⚕️', title:'¡Llegó la doctora!', text:'Entonces llegó la Doctora Sonrisa, la gran heroína de los dientes. Con sus instrumentos mágicos podía ver a Carielo y atraparlo.'},
+  {cls:'story-sc4', emoji:'🪥', title:'El arma secreta', text:'¿Sabés cuál es el arma secreta? ¡El cepillo de dientes! Con 2 minutos de cepillado, ¡el dragón Carielo no puede quedarse!'},
+  {cls:'story-sc5', emoji:'🌟', title:'¡Moli está feliz!', text:'Después de visitar a la doctora y cepillarse bien, Moli quedó brillante y feliz. ¡Vos también podés tener dientes súper fuertes! 🦷✨'}
+];
+let moliPage = 0;
+
+/* ═══════════════════════════════
+   NAVEGACIÓN PRINCIPAL
+   ═══════════════════════════════ */
+let porticoHistory = [];
+let currentPortico = 'portico-dashboard';
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (id === 'screen-app') {
+    document.getElementById('app-footer').style.display = 'flex';
+    document.getElementById('btn-wa').style.display = 'flex';
+  }
+  window.scrollTo(0, 0);
+}
+
+function enterApp() {
+  porticoHistory = [];
+  currentPortico = 'portico-dashboard';
+  showScreen('screen-app');
+  document.querySelectorAll('.portico').forEach(p => p.classList.remove('active'));
+  document.getElementById('portico-dashboard').classList.add('active');
+  setFooter('footer-inicio');
+  updateBackBtn();
+}
+
+function switchPortico(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (id !== currentPortico) {
+    porticoHistory.push(currentPortico);
+  }
+  document.querySelectorAll('.portico').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  currentPortico = id;
+  updateBackBtn();
+  window.scrollTo(0, 0);
+}
+
+function goBack() {
+  if (porticoHistory.length > 0) {
+    const prev = porticoHistory.pop();
+    document.querySelectorAll('.portico').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById(prev);
+    if (el) el.classList.add('active');
+    currentPortico = prev;
+    updateBackBtn();
+    window.scrollTo(0, 0);
+  }
+}
+
+function updateBackBtn() {
+  const btn = document.getElementById('backBtn');
+  if (btn) btn.style.display = porticoHistory.length > 0 ? 'block' : 'none';
+}
+
+/* ═══════════════════════════════
+   FOOTER VARIABLE POR ROL
+   ═══════════════════════════════ */
+function setFooter(activeId) {
+  document.querySelectorAll('.footer-btn').forEach(b => b.classList.remove('active'));
+  if (document.getElementById(activeId)) {
+    document.getElementById(activeId).classList.add('active');
+  }
+}
+
+/* ROL — cambia el botón variable del footer */
+const rolFooter = {
+  titular: { icon:'🔔', label:'Alertas', portico:'portico-dashboard' },
+  secretaria: { icon:'📅', label:'Agenda', portico:'portico-turnos' },
+  derivaciones: { icon:'📨', label:'Avisos', portico:'portico-derivaciones' },
+  paciente: { icon:'🚨', label:'Urgencias', portico:'portico-urgencias' }
+};
+function setRol(rol) {
+  const r = rolFooter[rol] || rolFooter.titular;
+  document.getElementById('footer-variable-icon').textContent = r.icon;
+  document.getElementById('footer-variable-label').textContent = r.label;
+  document.getElementById('footer-variable').onclick = () => { switchPortico(r.portico); setFooter('footer-variable'); };
+}
+setRol('titular'); /* Default: titular */
+
+/* ═══════════════════════════════
+   URGENCIAS
+   ═══════════════════════════════ */
+function showUrgDetalle(nivel) {
+  const u = urgenciaData[nivel];
+  const ico = document.getElementById('urg-d-ico');
+  ico.textContent = u.ico;
+  ico.style.background = nivel === 'alta' ? 'var(--urg-alta-bg)' : nivel === 'media' ? 'var(--urg-media-bg)' : 'var(--urg-baja-bg)';
+  document.getElementById('urg-d-title').textContent = u.title;
+  document.getElementById('urg-d-sub').textContent = u.sub;
+  document.getElementById('urg-d-desc').textContent = u.desc;
+  document.getElementById('urg-d-inst').textContent = u.inst;
+  document.getElementById('urg-d-alert').textContent = '⚠️ ' + u.alert;
+  const waBtn = document.getElementById('urg-d-wa');
+  const msg = u.nivel === 'alta' ? 'Tengo una urgencia dental urgente. Necesito atención hoy.' : 'Tengo una urgencia de nivel ' + u.nivel + ': ' + u.title + '. Por favor, ¿pueden orientarme?';
+  waBtn.onclick = () => openWAMsg(msg);
+  document.getElementById('urg-detalle').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+function hideUrgDetalle() {
+  document.getElementById('urg-detalle').style.display = 'none';
+}
+
+/* ═══════════════════════════════
+   SERVICIOS — EXPAND
+   ═══════════════════════════════ */
+function toggleServ(card) {
+  card.classList.toggle('open');
+}
+
+/* ═══════════════════════════════
+   ORTODONCIA VÍA
+   ═══════════════════════════════ */
+let alinHoras = 18;
+function setOrtoVia(via) {
+  document.getElementById('orto-brackets-btn').classList.toggle('active', via === 'brackets');
+  document.getElementById('orto-alineadores-btn').classList.toggle('active', via === 'alineadores');
+  document.getElementById('orto-via-brackets').style.display = via === 'brackets' ? 'block' : 'none';
+  document.getElementById('orto-via-alineadores').style.display = via === 'alineadores' ? 'block' : 'none';
+}
+function alinSumar(n) {
+  alinHoras = Math.max(0, Math.min(24, alinHoras + n));
+  document.getElementById('alin-horas').textContent = alinHoras;
+  document.getElementById('alin-restantes').textContent = Math.max(0, 22 - alinHoras) + ' horas';
+}
+function alinReset() { alinHoras = 0; document.getElementById('alin-horas').textContent = 0; document.getElementById('alin-restantes').textContent = '22 horas'; }
+
+/* ═══════════════════════════════
+   ORIENTACIÓN
+   ═══════════════════════════════ */
+function setOrienTab(btn, id) {
+  document.querySelectorAll('.post-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['post','higiene','faq'].forEach(k => {
+    document.getElementById('orien-' + k).style.display = k === id ? 'block' : 'none';
+  });
+}
+
+function setPostProc(btn, proc) {
+  document.querySelectorAll('[onclick*="setPostProc"]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const d = postData[proc];
+  document.getElementById('post-title').textContent = d.title;
+  document.getElementById('post-normal').textContent = d.normal;
+  document.getElementById('post-hacer').textContent = d.hacer;
+  document.getElementById('post-evitar').textContent = d.evitar;
+  document.getElementById('post-llamar').textContent = d.llamar;
+}
+
+/* ═══════════════════════════════
+   FAQ
+   ═══════════════════════════════ */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!open) item.classList.add('open');
+}
+
+/* ═══════════════════════════════
+   TURNOS
+   ═══════════════════════════════ */
+let motivoActual = '';
+function selectMotivo(el, motivo) {
+  el.closest('.motivo-grid').querySelectorAll('.motivo-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  motivoActual = motivo;
+}
+function selectSede(el) {
+  el.parentElement.querySelectorAll('.motivo-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function selectRadioSingle(el, cls) {
+  document.querySelectorAll(cls).forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function enviarTurno() {
+  const nombre = document.querySelector('#portico-turnos input[type="text"]')?.value || '[Nombre]';
+  const msg = 'Hola, solicito turno desde la app ByRadii.\n\nNombre: ' + nombre + '\nMotivo: ' + (motivoActual || 'No especificado');
+  openWAMsg(msg);
+}
+
+/* ═══════════════════════════════
+   WHATSAPP B2B AUTOMÁTICO
+   ═══════════════════════════════ */
+function openWA() {
+  const msgs = {
+    'portico-urgencias': 'Hola, tengo una urgencia dental y necesito orientación.',
+    'portico-turnos': 'Hola, quisiera solicitar un turno.',
+    'portico-derivaciones': 'Hola, me comunico desde la plataforma ByRadii sobre una derivación.',
+    'portico-pacientes': 'Hola, me comunico como paciente de la red ByRadii.',
+    'portico-dashboard': 'Hola, me comunico desde la plataforma ByRadii.'
+  };
+  const msg = msgs[currentPortico] || 'Hola, me comunico desde la app ByRadii.';
+  openWAMsg(msg);
+}
+function openWAMsg(msg) {
+  window.open('https://wa.me/5491100000000?text=' + encodeURIComponent(msg), '_blank');
+}
+
+/* ═══════════════════════════════
+   CUENTO MOLI
+   ═══════════════════════════════ */
+function renderMoli() {
+  const p = moliStory[moliPage];
+  const scene = document.getElementById('moli-scene');
+  scene.className = 'story-scene ' + p.cls;
+  document.getElementById('moli-emoji').textContent = p.emoji;
+  document.getElementById('moli-title').textContent = p.title;
+  document.getElementById('moli-text').textContent = p.text;
+  const dots = document.getElementById('moli-dots');
+  dots.innerHTML = moliStory.map((_, i) => `<div class="story-dot${i === moliPage ? ' active' : ''}"></div>`).join('');
+  document.getElementById('moli-back').disabled = moliPage === 0;
+  const next = document.getElementById('moli-next');
+  if (moliPage === moliStory.length - 1) { next.textContent = '🎉 Fin'; next.disabled = true; }
+  else { next.textContent = 'Siguiente →'; next.disabled = false; }
+}
+function moliNav(d) { moliPage = Math.max(0, Math.min(moliStory.length - 1, moliPage + d)); renderMoli(); }
+
+/* ═══════════════════════════════
+   INIT
+   ═══════════════════════════════ */
+renderMoli();
+
+/* Botón retroceso del dispositivo */
+window.addEventListener('popstate', function() {
+  if (screenHistory.length > 0) goBack();
+});
+</script>
+</body>
+</html>
